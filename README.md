@@ -1,0 +1,3 @@
+# ShelfSense
+
+A Java program to manage a library database. Project in progress...
