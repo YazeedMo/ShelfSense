@@ -1,17 +1,17 @@
-package com.shelfsense.shelfsense;
+package com.shelfsense.shelfsense.model;
 
-public abstract class Person {
+public abstract class User {
 
     // Person attributes
-    private int id;
+    private int userId;
     private String firstName;
     private String lastName;
     private String username;
     private String password;
 
     // Public constructor
-    public Person(int id, String firstName, String lastName, String username, String password) {
-        this.id = id;
+    public User(int userId, String firstName, String lastName, String username, String password) {
+        this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
@@ -19,8 +19,8 @@ public abstract class Person {
     }
 
     // Getters
-    public int getId() {
-        return id;
+    public int getUserId() {
+        return userId;
     }
     public String getFirstName() {
         return firstName;
@@ -36,8 +36,8 @@ public abstract class Person {
     }
 
     // Setters
-    public void setId(int id) {
-        this.id = id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -50,5 +50,16 @@ public abstract class Person {
     }
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

@@ -1,0 +1,99 @@
+DROP DATABASE IF EXISTS ShelfSenseDB;
+CREATE DATABASE ShelfSenseDB;
+
+USE ShelfSenseDB;
+
+CREATE TABLE Users (
+	UserId INT PRIMARY KEY,
+    FirstName VARCHAR(255) NOT NULL,
+    LastName VARCHAR(255) NOT NULL,
+    Username VARCHAR(255) NOT NULL,
+    Password VARCHAR(255) NOT NULL,
+    Type VARCHAR(255) NOT NULL CHECK (Type IN ('Employee', 'Customer'))   
+);
+
+
+CREATE TABLE Employees (
+	EmployeeId INT PRIMARY KEY,
+    HireDate DATE,
+    Role VARCHAR(20) NOT NULL,
+    FOREIGN KEY (EmployeeId) references Users(UserId)
+);
+
+
+CREATE TABLE Customers (
+	CustomerId INT PRIMARY KEY,
+    JoinDate DATE,
+    ExpiryDate DATE,
+    FOREIGN KEY (CustomerId) references Users(UserId)
+);
+
+CREATE TABLE Books (
+	BookID INT PRIMARY KEY,
+    Title VARCHAR(255) NOT NULL,
+    Author VARCHAR(255) NOT NULL,
+    ISBN VARCHAR(13),
+    Genre VARCHAR(100),
+    PublicationDate DATE,
+    Publisher VARCHAR(255),
+    Edition VARCHAR(50),
+    Quantity INT
+);
+
+CREATE TABLE Loans (
+	LoanID INT PRIMARY KEY,
+    BookID INT,
+    CustomerID INT,
+    BorrowedDate DATE,
+    ReturnedDate DATE,
+    FOREIGN KEY (BookID) REFERENCES BOOKS(BookID),
+    FOREIGN KEY (CustomerID) REFERENCES CUSTOMERS(CustomerID)
+);
+
+
+INSERT INTO Users (UserId, FirstName, LastName, Username, Password, Type)
+VALUES
+(1, 'Admin', 'Tester', 'admin', 'A.Tester', 'Employee'),
+(2, 'Carly', 'Johnson', 'carly', 'C.Johnson', 'Employee'),
+(3, 'David', 'Smith', 'david', 'D.Smith', 'Employee'),
+(4, 'Sarah', 'Wiiliams', 'sarah', 'S.Williams', 'Employee'),
+(5, 'John', 'Doe', 'john', 'J.Doe', 'Customer'),
+(6, 'Jane', 'Smith', 'jane', 'J.Smith', 'Customer'),
+(7, 'Micky', 'Pearson', 'micky', 'M.Pearson', 'Customer'),
+(8, 'Emily', 'Brown', 'emily', 'E.Brown', 'Customer'),
+(9, 'Danny', 'Wilson', 'danny', 'D.Wilson', 'Customer');
+
+
+INSERT INTO Employees (EmployeeId, HireDate, Role)
+VALUES
+(1, '2023-07-22', 'Manager'),
+(2, '2023-07-22', 'Librarian'),
+(3, '2023-07-22', 'Librarian'),
+(4, '2023-07-22', 'Librarian');
+
+
+INSERT INTO Customers (CustomerId, JoinDate, ExpiryDate)
+VALUES
+(5, '2022-01-01', '2023-01-01'),
+(6, '2022-02-01', '2023-02-01'),
+(7, '2022-03-01', '2023-03-01'),
+(8, '2022-04-01', '2023-04-01'),
+(9, '2022-05-01', '2023-05-01');
+
+
+INSERT INTO Books (BookID, Title, Author, ISBN, Genre, PublicationDate, Publisher, Edition, Quantity)
+VALUES
+(1, 'The Great Gatsby', 'F. Scott Fitzgerald', 9780743273565, 'Classic', '1925-04-10', 'Scribner', '1st Edition', 5),
+(2, 'To Kill a Mockingbird', 'Harper Lee', '9780446310789', 'Fiction', '1960-07-11', 'J. B. Lippincott & Co.', '50th Anniversary Edition', 3),
+(3, '1984', 'George Orwell', '9780451524935', 'Dystopian', '1949-06-08', 'Signet Classics', 'Revised Edition', 7),
+(4, 'Pride and Prejudice', 'Jane Austen', '9780141439518', 'Romance', '1813-01-28', 'Penguin Classics', 'Reprint Edition', 2),
+(5, 'The Catcher in the Rye', 'J. D. Salinger', '9780316769488', 'Coming-of-Age', '1951-07-16', 'Little, Brown and Company', '1st Edition', 4);
+
+
+INSERT INTO Loans (LoanID, BookID, CustomerID, BorrowedDate, ReturnedDate)
+VALUES
+(1, 1, 5, '2022-01-01', '2022-01-10'),
+(2, 2, 5, '2022-02-01', '2022-02-08'),
+(3, 3, 6, '2022-03-01', '2022-03-14'),
+(4, 4, 7, '2022-04-01', '2022-04-12'),
+(5, 5, 8, '2022-05-01', '2022-05-18');

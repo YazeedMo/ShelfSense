@@ -1,19 +1,19 @@
-package com.shelfsense.shelfsense;
+package com.shelfsense.shelfsense.model;
 
 import java.util.Date;
 
 public class Loan {
 
     // Loan attributes
-    private int id;
+    private int loanId;
     private int bookId;
     private int customerId;
     private Date borrowedDate;
     private Date returnedDate;
 
     // Public constructor
-    public Loan(int id, int bookId, int customerId, Date borrowedDate, Date returnedDate) {
-        this.id = id;
+    public Loan(int loanId, int bookId, int customerId, Date borrowedDate, Date returnedDate) {
+        this.loanId = loanId;
         this.bookId = bookId;
         this.customerId = customerId;
         this.borrowedDate = borrowedDate;
@@ -21,8 +21,8 @@ public class Loan {
     }
 
     // Getters
-    public int getId() {
-        return id;
+    public int getLoanId() {
+        return loanId;
     }
     public int getBookId() {
         return bookId;
@@ -38,8 +38,8 @@ public class Loan {
     }
 
     // Setters
-    public void setId(int id) {
-        this.id = id;
+    public void setLoanId(int loanId) {
+        this.loanId = loanId;
     }
     public void setBookId(int bookId) {
         this.bookId = bookId;
