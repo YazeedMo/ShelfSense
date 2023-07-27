@@ -6,13 +6,14 @@ import com.shelfsense.shelfsense.util.Session;
 
 import java.sql.SQLException;
 
+// Service class to validate user credentials when logging in
 public class LoginService {
+
+    private UserDAOImp udi = new UserDAOImp();
 
     public boolean isValidCredentials(String username, String password) {
 
         boolean validCredentials = false;
-
-        UserDAOImp udi = new UserDAOImp();
 
         // Check if username and password matches and is correct
         try {
@@ -30,23 +31,16 @@ public class LoginService {
 
     }
 
+    // Stores current user in the Singleton Session class
     private void setCurrentUser(String username) {
-
-        UserDAOImp udi = new UserDAOImp();
 
         try {
 
             User currentUser = udi.getWithUsername(username);
             Session.getInstance().setCurrentUser(currentUser);
 
-            System.out.println(Session.getInstance().getCurrentUser());
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-
-
     }
-
 }

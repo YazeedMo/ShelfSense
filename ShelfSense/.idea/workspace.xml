@@ -6,15 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="e4617e5f-d3ac-4188-8137-ee95c46e176e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/model/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/model/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/model/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/Entry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/Entry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/model/Loan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/LoginController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/shelfsense/shelfsense/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/shelfsense/shelfsense/Login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/UserDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/UserDAOImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/services/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/services/LoginService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,9 +20,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="JUnit5 Test Class" />
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -49,14 +44,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "settings.editor.selected.configurable": "testing.instrumented.configuration"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -65,26 +61,97 @@
       <recent name="com.shelfsense.shelfsense" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.shelfsense.shelfsense.services" />
       <recent name="com.shelfsense.shelfsense.dao" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.shelfsense.shelfsense.Test" />
+  <component name="RunManager" selected="JUnit.LoginServiceTest">
+    <configuration name="LoginServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ShelfSense" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.shelfsense.shelfsense.*" />
+          <option name="PATTERN" value="com.shelfsense.shelfsense.services.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.shelfsense.shelfsense.services" />
+      <option name="MAIN_CLASS_NAME" value="com.shelfsense.shelfsense.services.LoginServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoginServiceTest.falseForEmptyUsername" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ShelfSense" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.shelfsense.shelfsense.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.shelfsense.shelfsense.services" />
+      <option name="MAIN_CLASS_NAME" value="com.shelfsense.shelfsense.services.LoginServiceTest" />
+      <option name="METHOD_NAME" value="falseForEmptyUsername" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoginServiceTest.falseForIncorrectUsernameCasing" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ShelfSense" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.shelfsense.shelfsense.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.shelfsense.shelfsense.services" />
+      <option name="MAIN_CLASS_NAME" value="com.shelfsense.shelfsense.services.LoginServiceTest" />
+      <option name="METHOD_NAME" value="falseForIncorrectUsernameCasing" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoginServiceTest.falseForInvalidCredentials" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ShelfSense" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.shelfsense.shelfsense.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.shelfsense.shelfsense.services" />
+      <option name="MAIN_CLASS_NAME" value="com.shelfsense.shelfsense.services.LoginServiceTest" />
+      <option name="METHOD_NAME" value="falseForInvalidCredentials" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoginServiceTest.trueRegardlessOfCasing" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ShelfSense" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.shelfsense.shelfsense.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.shelfsense.shelfsense.services" />
+      <option name="MAIN_CLASS_NAME" value="com.shelfsense.shelfsense.services.LoginServiceTest" />
+      <option name="METHOD_NAME" value="trueRegardlessOfCasing" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Test" />
+        <item itemvalue="JUnit.LoginServiceTest" />
+        <item itemvalue="JUnit.LoginServiceTest.falseForEmptyUsername" />
+        <item itemvalue="JUnit.LoginServiceTest.falseForIncorrectUsernameCasing" />
+        <item itemvalue="JUnit.LoginServiceTest.trueRegardlessOfCasing" />
+        <item itemvalue="JUnit.LoginServiceTest.falseForInvalidCredentials" />
       </list>
     </recent_temporary>
   </component>

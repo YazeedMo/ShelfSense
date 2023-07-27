@@ -31,24 +31,21 @@ public class LoginController {
         if (validInput(username, password)) {
             boolean validCredentials = new LoginService().isValidCredentials(username, password);
             if (validCredentials) {
-                System.out.println("Login successful!!!");
-                System.out.println("Username: " + username);
-                System.out.println("Password: " + password);
+                // Do something
             }
             else {
                 lblNotify.setText("Invalid Username or password");
             }
         }
-
     }
 
     public boolean validInput(String username, String password) {
 
-        if (txtFieldUsername.getText().isEmpty()) {
+        if (username.isEmpty()) {
             lblNotify.setText("Please enter username");
             txtFieldUsername.requestFocus();
             return false;
-        } else if (txtFieldPassword.getText().isEmpty()) {
+        } else if (password.isEmpty()) {
             lblNotify.setText("Please enter password");
             txtFieldPassword.requestFocus();
             return false;
@@ -57,5 +54,4 @@ public class LoginController {
             return true;
         }
     }
-
 }

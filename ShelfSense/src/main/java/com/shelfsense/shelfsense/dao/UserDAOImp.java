@@ -146,18 +146,27 @@ public class UserDAOImp implements UserDAO {
     @Override
     public boolean usernameExists(String username) throws SQLException {
 
+        boolean usernameExists = false;
+
         String query = "SELECT * FROM Users WHERE username = ?";
 
         try (Connection connection = Database.getConnection();
              PreparedStatement ps = connection.prepareStatement(query)) {
 
             ps.setString(1, username);
-            // If a record is found, this line will return true, if rs is empty, it will return false
             ResultSet rs = ps.executeQuery();
 
-            return rs.next();
+            // Get actual username from database instead of checking if a record was returned
+            // Database returns username regardless of casing (Database querying is case-insensitive)
+            // Get actual username from database to ensure case sensitivity when user logs in
+            if (rs.next()) {
+                String dbUsername = rs.getString("Username");
+                if (username.equals(dbUsername)) {
+                    usernameExists = true;
+                }
+            }
+            return usernameExists;
         }
-
     }
 
     @Override
@@ -172,6 +181,7 @@ public class UserDAOImp implements UserDAO {
             ResultSet rs = ps.executeQuery();
 
             rs.next();
+
             return rs.getString("Password");
 
         }

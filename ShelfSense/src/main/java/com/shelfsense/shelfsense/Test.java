@@ -11,10 +11,10 @@ public class Test {
 
         LoginService loginService = new LoginService();
 
-        String username = "John";
+        String username = null;
         String password = "J.Doe";
 
-        loginService.isValidCredentials(username, password);
+        System.out.println(loginService.isValidCredentials(username, password));
 
     }
 
