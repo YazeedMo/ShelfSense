@@ -9,6 +9,8 @@ import java.util.List;
 
 public class UserDAOImp implements UserDAO {
 
+    // region Private Methods
+
     public int getIdWithUsername(String username) throws SQLException {
 
         String query = "SELECT UserId FROM Users WHERE Username = ?";
@@ -102,10 +104,14 @@ public class UserDAOImp implements UserDAO {
         return user;
     }
 
+    // endregion
+
+    // region GenericDAO Methods
+
     @Override
     public User getWithId(int id) throws SQLException {
 
-        User user = null;
+        User user;
 
         String userType = getTypeWithId(id);
 
@@ -142,6 +148,10 @@ public class UserDAOImp implements UserDAO {
     public int delete(User person) throws SQLException {
         return 0;
     }
+
+    // endregion
+
+    // region UserDAOImp methods
 
     @Override
     public boolean usernameExists(String username) throws SQLException {
@@ -195,5 +205,7 @@ public class UserDAOImp implements UserDAO {
         return getWithId(userId);
 
     }
+
+    // endregion
 
 }

@@ -1,8 +1,47 @@
 package com.shelfsense.shelfsense.dao;
 
-import java.sql.*;
+import com.shelfsense.shelfsense.model.Employee;
 
-public class EmployeeDAOImp extends UserDAOImp implements EmployeeDAO {
+import java.sql.*;
+import java.util.List;
+
+public class EmployeeDAOImp implements EmployeeDAO {
+
+    // region GenericDAO methods
+
+    @Override
+    public Employee getWithId(int id) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public List<Employee> getAll() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public int save(Employee employee) throws SQLException {
+        return 0;
+    }
+
+    @Override
+    public int insert(Employee employee) throws SQLException {
+        return 0;
+    }
+
+    @Override
+    public int update(Employee employee) throws SQLException {
+        return 0;
+    }
+
+    @Override
+    public int delete(Employee employee) throws SQLException {
+        return 0;
+    }
+
+    // endregion
+
+    // region EmployeeDAOIMP Methods
 
     @Override
     public Date getHiredate(int userId) throws SQLException {
@@ -39,4 +78,7 @@ public class EmployeeDAOImp extends UserDAOImp implements EmployeeDAO {
         }
 
     }
+
+    // endregion
+
 }

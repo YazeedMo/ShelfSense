@@ -1,10 +1,47 @@
 package com.shelfsense.shelfsense.dao;
 
-import com.shelfsense.shelfsense.model.User;
+import com.shelfsense.shelfsense.model.Customer;
 
 import java.sql.*;
+import java.util.List;
 
-public class CustomerDAOImp extends UserDAOImp implements CustomerDAO {
+public class CustomerDAOImp implements CustomerDAO {
+
+    // region GenericDAO Methods
+
+    @Override
+    public Customer getWithId(int id) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public List<Customer> getAll() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public int save(Customer customer) throws SQLException {
+        return 0;
+    }
+
+    @Override
+    public int insert(Customer customer) throws SQLException {
+        return 0;
+    }
+
+    @Override
+    public int update(Customer customer) throws SQLException {
+        return 0;
+    }
+
+    @Override
+    public int delete(Customer customer) throws SQLException {
+        return 0;
+    }
+
+    // endregion
+
+    // region CustomerDAOImp Methods
 
     @Override
     public Date getJoinDate(int userId) throws SQLException {
@@ -41,4 +78,7 @@ public class CustomerDAOImp extends UserDAOImp implements CustomerDAO {
         }
 
     }
+
+    // endregion
+
 }

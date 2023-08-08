@@ -6,10 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e4617e5f-d3ac-4188-8137-ee95c46e176e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/UserDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/UserDAOImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/services/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/services/LoginService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,15 +40,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "settings.editor.selected.configurable": "testing.instrumented.configuration"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/YAZEED/Departments/Daily/IT/Programming/Projects/GitHub/NavalWarfare/NavalWarfare&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;testing.instrumented.configuration&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
