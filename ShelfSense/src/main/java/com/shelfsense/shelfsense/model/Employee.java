@@ -9,8 +9,8 @@ public class Employee extends User {
     private String role;
 
     // Public constructor
-    public Employee(int employeeId, String firstName, String lastName, String username, String password, Date hireDate, String role) {
-        super(employeeId, firstName, lastName, username, password);
+    public Employee(int employeeId, String firstName, String lastName, String username, String password, String type, Date hireDate, String role) {
+        super(employeeId, firstName, lastName, username, password, type);
         this.hireDate = hireDate;
         this.role = role;
     }
@@ -39,6 +39,7 @@ public class Employee extends User {
                 ", lastName='" + super.getLastName() + '\'' +
                 ", username='" + super.getUsername() + '\'' +
                 ", password='" + super.getPassword() + '\'' +
+                ", Type='" + super.getType() + '\'' +
                 ", hireDate='" + this.hireDate + '\'' +
                 ", role='" + this.role + '\'' +
                 '}';

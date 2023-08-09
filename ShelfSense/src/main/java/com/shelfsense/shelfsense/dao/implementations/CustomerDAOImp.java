@@ -1,5 +1,7 @@
-package com.shelfsense.shelfsense.dao;
+package com.shelfsense.shelfsense.dao.implementations;
 
+import com.shelfsense.shelfsense.dao.Database;
+import com.shelfsense.shelfsense.dao.interfaces.CustomerDAO;
 import com.shelfsense.shelfsense.model.Customer;
 
 import java.sql.*;
@@ -32,10 +34,11 @@ public class CustomerDAOImp implements CustomerDAO {
                 String lastName = rs.getString("LastName");
                 String username = rs.getString("Username");
                 String password = rs.getString("Password");
+                String type = rs.getString("Type");
                 Date joinDate = rs.getDate("JoinDate");
                 Date expirydate = rs.getDate("ExpiryDate");
 
-                customer = new Customer(customerId, firstName, lastName, username, password, joinDate, expirydate);
+                customer = new Customer(customerId, firstName, lastName, username, password, type, joinDate, expirydate);
 
             }
         }
@@ -63,10 +66,11 @@ public class CustomerDAOImp implements CustomerDAO {
                 String lastName = rs.getString("LastName");
                 String username = rs.getString("Username");
                 String password = rs.getString("Password");
+                String type = rs.getString("Type");
                 Date joinDate = rs.getDate("JoinDate");
                 Date expiryDate = rs.getDate("ExpiryDate");
 
-                allCustomers.add(new Customer(customerId, firstName, lastName, username, password, joinDate, expiryDate));
+                allCustomers.add(new Customer(customerId, firstName, lastName, username, password, type, joinDate, expiryDate));
 
             }
 

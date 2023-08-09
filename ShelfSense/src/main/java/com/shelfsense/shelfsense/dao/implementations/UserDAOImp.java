@@ -1,5 +1,7 @@
-package com.shelfsense.shelfsense.dao;
+package com.shelfsense.shelfsense.dao.implementations;
 
+import com.shelfsense.shelfsense.dao.Database;
+import com.shelfsense.shelfsense.dao.interfaces.UserDAO;
 import com.shelfsense.shelfsense.model.Customer;
 import com.shelfsense.shelfsense.model.Employee;
 import com.shelfsense.shelfsense.model.User;
@@ -50,22 +52,6 @@ public class UserDAOImp implements UserDAO {
     // region GenericDAO Methods
 
     @Override
-    public User getWithId(int id) throws SQLException {
-
-        User user;
-
-        String userType = getTypeWithId(id);
-
-        if (userType.equalsIgnoreCase("Customer")) {
-            user = new CustomerDAOImp().getWithId(id);
-        }
-        else {
-            user = new EmployeeDAOImp().getWithId(id);
-        }
-        return user;
-    }
-
-    @Override
     public List<User> getAll() throws SQLException {
 
         List<User> allUsers = new ArrayList<>();
@@ -79,6 +65,22 @@ public class UserDAOImp implements UserDAO {
         allUsers.addAll(allCustomers);
 
         return allUsers;
+    }
+
+    @Override
+    public User getWithId(int id) throws SQLException {
+
+        User user;
+
+        String userType = getTypeWithId(id);
+
+        if (userType.equalsIgnoreCase("Customer")) {
+            user = new CustomerDAOImp().getWithId(id);
+        }
+        else {
+            user = new EmployeeDAOImp().getWithId(id);
+        }
+        return user;
     }
 
     @Override

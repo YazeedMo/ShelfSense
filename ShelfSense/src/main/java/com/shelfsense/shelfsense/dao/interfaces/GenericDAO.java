@@ -1,4 +1,4 @@
-package com.shelfsense.shelfsense.dao;
+package com.shelfsense.shelfsense.dao.interfaces;
 
 import java.sql.SQLException;
 import java.util.List;

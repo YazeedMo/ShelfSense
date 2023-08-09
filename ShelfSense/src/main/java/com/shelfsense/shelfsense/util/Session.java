@@ -27,8 +27,6 @@ public class Session {
     public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
 
-        System.out.println(currentUser.toString());
-
     }
 
 }

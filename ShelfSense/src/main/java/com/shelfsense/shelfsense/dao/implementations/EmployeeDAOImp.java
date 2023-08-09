@@ -1,5 +1,7 @@
-package com.shelfsense.shelfsense.dao;
+package com.shelfsense.shelfsense.dao.implementations;
 
+import com.shelfsense.shelfsense.dao.Database;
+import com.shelfsense.shelfsense.dao.interfaces.EmployeeDAO;
 import com.shelfsense.shelfsense.model.Employee;
 
 import java.sql.*;
@@ -32,10 +34,11 @@ public class EmployeeDAOImp implements EmployeeDAO {
                 String lastName = rs.getString("LastName");
                 String username = rs.getString("Username");
                 String password = rs.getString("Password");
+                String type = rs.getString("Type");
                 Date joinDate = rs.getDate("HireDate");
                 String role = rs.getString("Role");
 
-                employee = new Employee(employeeId, firstName, lastName, username, password, joinDate, role);
+                employee = new Employee(employeeId, firstName, lastName, username, password, type, joinDate, role);
 
             }
         }
@@ -63,10 +66,11 @@ public class EmployeeDAOImp implements EmployeeDAO {
                 String lastName = rs.getString("LastName");
                 String username = rs.getString("Username");
                 String password = rs.getString("Password");
+                String type = rs.getString("Type");
                 Date hireDate = rs.getDate("HireDate");
                 String role = rs.getString("Role");
 
-                allEmployees.add(new Employee(employeeId, firstName, lastName, username, password, hireDate, role));
+                allEmployees.add(new Employee(employeeId, firstName, lastName, username, password, type, hireDate, role));
             }
 
         }

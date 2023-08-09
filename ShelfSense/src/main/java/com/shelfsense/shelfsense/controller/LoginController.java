@@ -1,11 +1,17 @@
 package com.shelfsense.shelfsense.controller;
 
+import com.shelfsense.shelfsense.dao.implementations.UserDAOImp;
+import com.shelfsense.shelfsense.model.Employee;
+import com.shelfsense.shelfsense.model.User;
 import com.shelfsense.shelfsense.services.LoginService;
+import com.shelfsense.shelfsense.util.JavaFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+
+import java.sql.SQLException;
 
 public class LoginController {
 
@@ -22,7 +28,7 @@ public class LoginController {
     private TextField txtFieldPassword;
 
     @FXML
-    void btnLoginClicked(ActionEvent event) {
+    void btnLoginClicked(ActionEvent event) throws SQLException {
 
         // Get username and password
         String username = txtFieldUsername.getText();
@@ -31,7 +37,8 @@ public class LoginController {
         if (validInput(username, password)) {
             boolean validCredentials = new LoginService().isValidCredentials(username, password);
             if (validCredentials) {
-                // Do something
+                User user = new UserDAOImp().getWithUsername(username);
+                showRelevantMenu(user);
             }
             else {
                 lblNotify.setText("Invalid Username or password");
@@ -39,7 +46,7 @@ public class LoginController {
         }
     }
 
-    public boolean validInput(String username, String password) {
+    private boolean validInput(String username, String password) {
 
         if (username.isEmpty()) {
             lblNotify.setText("Please enter username");
@@ -54,4 +61,23 @@ public class LoginController {
             return true;
         }
     }
+
+    private void showRelevantMenu(User user) {
+
+        if (user.getType().equals("Employee")) {
+            Employee employee = (Employee) user;
+            if (employee.getRole().equals("Manager")) {
+                JavaFXUtils.switchScenes(btnLogin, JavaFXUtils.FXMLPaths.MANAGER_MAIN_MENU.getPath());
+            }
+            else if (employee.getRole().equals("Librarian")) {
+                JavaFXUtils.switchScenes(btnLogin, JavaFXUtils.FXMLPaths.LIBRARIAN_MAIN_MENU.getPath());
+            }
+        }
+        else if (user.getType().equals("Customer")) {
+            JavaFXUtils.switchScenes(btnLogin, JavaFXUtils.FXMLPaths.CUSTOMER_MANI_MENU.getPath());
+        }
+
+    }
+
+
 }

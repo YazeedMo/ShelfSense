@@ -9,8 +9,8 @@ public class Customer extends User {
     private Date expiryDate;
 
     // Public Constructor
-    public Customer(int customerId, String firstName, String lastName, String username, String password, Date joinDate, Date expiryDate) {
-        super(customerId, firstName, lastName, username, password);
+    public Customer(int customerId, String firstName, String lastName, String username, String password, String type, Date joinDate, Date expiryDate) {
+        super(customerId, firstName, lastName, username, password, type);
         this.joinDate = joinDate;
         this.expiryDate = expiryDate;
     }
@@ -39,6 +39,7 @@ public class Customer extends User {
                 ", lastName='" + super.getLastName() + '\'' +
                 ", username='" + super.getUsername() + '\'' +
                 ", password='" + super.getPassword() + '\'' +
+                ", Type='" + super.getType() + '\'' +
                 ", joinDate='" + this.joinDate + '\'' +
                 ", expiryDate='" + this.expiryDate + '\'' +
                 '}';

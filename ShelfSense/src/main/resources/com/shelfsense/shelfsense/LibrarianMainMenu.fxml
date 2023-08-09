@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="471.0" prefWidth="683.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.shelfsense.shelfsense.controller.LibrarianMainMenuController">
+   <top>
+      <Label text="Librarian" BorderPane.alignment="CENTER" />
+   </top>
+   <center>
+      <VBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="300.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button minHeight="30.0" mnemonicParsing="false" onAction="#btnManageBooksClicked" prefWidth="150.0" text="Manage Books" />
+            <Button minHeight="30.0" mnemonicParsing="false" onAction="#btnManageCustomersClicked" prefWidth="150.0" text="Manage Customers" />
+            <Button minHeight="30.0" mnemonicParsing="false" onAction="#btnManageLoansClicked" prefWidth="150.0" text="Manage Loans" />
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <Button minHeight="30.0" mnemonicParsing="false" onAction="#btnBackClicked" prefWidth="150.0" text="Back" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>

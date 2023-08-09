@@ -1,6 +1,6 @@
 package com.shelfsense.shelfsense.services;
 
-import com.shelfsense.shelfsense.dao.UserDAOImp;
+import com.shelfsense.shelfsense.dao.implementations.UserDAOImp;
 import com.shelfsense.shelfsense.model.User;
 import com.shelfsense.shelfsense.util.Session;
 
@@ -9,7 +9,7 @@ import java.sql.SQLException;
 // Service class to validate user credentials when logging in
 public class LoginService {
 
-    private UserDAOImp udi = new UserDAOImp();
+    private final UserDAOImp udi = new UserDAOImp();
 
     public boolean isValidCredentials(String username, String password) {
 
