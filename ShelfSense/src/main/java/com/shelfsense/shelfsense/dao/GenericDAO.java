@@ -5,11 +5,9 @@ import java.util.List;
 
 public interface GenericDAO<T> {
 
-    T getWithId(int id) throws SQLException;
-
     List<T> getAll() throws SQLException;
 
-    int save(T t) throws SQLException;
+    T getWithId(int id) throws SQLException;
 
     int insert(T t) throws SQLException;
 

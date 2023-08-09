@@ -5,13 +5,14 @@ import com.shelfsense.shelfsense.model.Employee;
 import com.shelfsense.shelfsense.model.User;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAOImp implements UserDAO {
 
     // region Private Methods
 
-    public int getIdWithUsername(String username) throws SQLException {
+    private int getIdWithUsername(String username) throws SQLException {
 
         String query = "SELECT UserId FROM Users WHERE Username = ?";
 
@@ -22,7 +23,7 @@ public class UserDAOImp implements UserDAO {
             ResultSet rs = ps.executeQuery();
 
             rs.next();
-            return rs.getInt("userId");
+            return rs.getInt("UserId");
 
         }
     }
@@ -44,66 +45,6 @@ public class UserDAOImp implements UserDAO {
 
     }
 
-    private User getCustomer(int userId) throws SQLException {
-
-        User user = null;
-
-        String query = "SELECT * FROM Users " +
-                "JOIN Customers ON Users.UserId = Customers.CustomerId " +
-                "WHERE Users.UserId = ?";
-
-        try (Connection connection = Database.getConnection();
-             PreparedStatement ps = connection.prepareStatement(query)) {
-
-            ps.setString(1, String.valueOf(userId));
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                int userId1 = rs.getInt("UserId");
-                String firstName = rs.getString("FirstName");
-                String lastName = rs.getString("LastName");
-                String username = rs.getString("Username");
-                String password = rs.getString("Password");
-                Date joinDate = rs.getDate("JoinDate");
-                Date expirydate = rs.getDate("ExpiryDate");
-
-                user = new Customer(userId1, firstName, lastName, username, password, joinDate, expirydate);
-
-            }
-        }
-        return user;
-    }
-
-    private User getEmployee(int userId) throws SQLException {
-
-        User user = null;
-
-        String query = "SELECT * FROM Users " +
-                "JOIN Employees ON Users.UserId = Employees.EmployeeId " +
-                "WHERE Users.UserId = ?";
-
-        try (Connection connection = Database.getConnection();
-             PreparedStatement ps = connection.prepareStatement(query)) {
-
-            ps.setString(1, String.valueOf(userId));
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                int userId1 = rs.getInt("UserId");
-                String firstName = rs.getString("FirstName");
-                String lastName = rs.getString("LastName");
-                String username = rs.getString("Username");
-                String password = rs.getString("Password");
-                Date joinDate = rs.getDate("HireDate");
-                String role = rs.getString("Role");
-
-                user = new Employee(userId1, firstName, lastName, username, password, joinDate, role);
-
-            }
-        }
-        return user;
-    }
-
     // endregion
 
     // region GenericDAO Methods
@@ -116,22 +57,28 @@ public class UserDAOImp implements UserDAO {
         String userType = getTypeWithId(id);
 
         if (userType.equalsIgnoreCase("Customer")) {
-            user = getCustomer(id);
+            user = new CustomerDAOImp().getWithId(id);
         }
         else {
-            user = getEmployee(id);
+            user = new EmployeeDAOImp().getWithId(id);
         }
         return user;
     }
 
     @Override
     public List<User> getAll() throws SQLException {
-        return null;
-    }
 
-    @Override
-    public int save(User person) throws SQLException {
-        return 0;
+        List<User> allUsers = new ArrayList<>();
+
+        // Get List of all Employees and Customers
+        List<Employee> allEmployees = new EmployeeDAOImp().getAll();
+        List<Customer> allCustomers = new CustomerDAOImp().getAll();
+
+        // Combine both lists into allUser
+        allUsers.addAll(allEmployees);
+        allUsers.addAll(allCustomers);
+
+        return allUsers;
     }
 
     @Override
