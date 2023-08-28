@@ -14,7 +14,7 @@ public class ManagerMainMenuController {
 
     @FXML
     void btnManageLibrariansClicked(ActionEvent event) {
-
+        JavaFXUtils.showNextScene((Node) event.getSource(), JavaFXUtils.FXMLPaths.MANAGE_LIBRARIANS.getPath());
     }
 
     @FXML
@@ -35,7 +35,7 @@ public class ManagerMainMenuController {
     @FXML
     void btnBackClicked(ActionEvent event) {
 
-        JavaFXUtils.switchScenes((Node) event.getSource(), JavaFXUtils.FXMLPaths.LOGIN.getPath());
+        JavaFXUtils.showPreviousScene((Node) event.getSource());
 
     }
 

@@ -26,7 +26,6 @@ public class Session {
 
     public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
-
     }
 
 }

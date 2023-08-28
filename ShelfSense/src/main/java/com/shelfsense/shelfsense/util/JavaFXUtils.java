@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.util.Stack;
 
 public class JavaFXUtils {
 
@@ -17,7 +18,8 @@ public class JavaFXUtils {
         LOGIN("/com/shelfsense/shelfsense/Login.fxml"),
         MANAGER_MAIN_MENU("/com/shelfsense/shelfsense/ManagerMainMenu.fxml"),
         LIBRARIAN_MAIN_MENU("/com/shelfsense/shelfsense/LibrarianMainMenu.fxml"),
-        CUSTOMER_MANI_MENU("/com/shelfsense/shelfsense/CustomerMainMenu.fxml");
+        CUSTOMER_MAIN_MENU("/com/shelfsense/shelfsense/CustomerMainMenu.fxml"),
+        MANAGE_LIBRARIANS("/com/shelfsense/shelfsense/ManageLibrarians.fxml");
 
         private final String path;
 
@@ -31,7 +33,24 @@ public class JavaFXUtils {
 
     }
 
-    public static void switchScenes (Node node, String fxmlPath) {
+    // Stack to store previous Scenes
+    private static final Stack<Scene> sceneHistory = new Stack<>();
+
+    // Method to show next scene that will be stored on the sceneHistory stack
+    public static void showNextScene(Node node, String fxmlPath) {
+
+        try {
+            sceneHistory.push(getCurrentStage(node).getScene());
+            Parent root = FXMLLoader.load(Objects.requireNonNull(JavaFXUtils.class.getResource(fxmlPath)));
+            Scene scene = new Scene(root);
+            getCurrentStage(node).setScene(scene);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    // Method to change to scene that should not be stored on the sceneHistory stack
+    public static void changeScene(Node node, String fxmlPath) {
 
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(JavaFXUtils.class.getResource(fxmlPath)));
@@ -41,13 +60,14 @@ public class JavaFXUtils {
             throw new RuntimeException(e);
         }
 
+    }
 
+    public static void showPreviousScene (Node node) {
+        getCurrentStage(node).setScene(sceneHistory.pop());
     }
 
     public static Stage getCurrentStage (Node node) {
-
         return (Stage) node.getScene().getWindow();
-
     }
 
 }

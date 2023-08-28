@@ -1,0 +1,25 @@
+Learn JavaFX TableView
+
+Create function to view all Librarians
+Create function to add new Librarian
+Create function to delete Librarian
+Create function to edit Librarian details
+
+Create function to view all Books
+Create function to add new Book
+Create function to delete Book
+Create function to edit Book details
+
+Create function to view Customers
+Create function to add new Customer
+Create function to delete Book
+Create function to edit Customer details
+
+Create function to view Loans
+Create function to add Loan
+Create function to delete Loan
+Create function to edit Loan
+
+Create function to reserve Book
+
+Design and create a better UI

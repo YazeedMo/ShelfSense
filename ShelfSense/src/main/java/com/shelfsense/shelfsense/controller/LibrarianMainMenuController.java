@@ -25,7 +25,7 @@ public class LibrarianMainMenuController {
     @FXML
     void btnBackClicked(ActionEvent event) {
 
-        JavaFXUtils.switchScenes((Node) event.getSource(), JavaFXUtils.FXMLPaths.LOGIN.getPath());
+        JavaFXUtils.showPreviousScene((Node) event.getSource());
 
     }
 }

@@ -37,6 +37,7 @@ public class LoginController {
         if (validInput(username, password)) {
             boolean validCredentials = new LoginService().isValidCredentials(username, password);
             if (validCredentials) {
+                resetScene();
                 User user = new UserDAOImp().getWithUsername(username);
                 showRelevantMenu(user);
             }
@@ -67,15 +68,26 @@ public class LoginController {
         if (user.getType().equals("Employee")) {
             Employee employee = (Employee) user;
             if (employee.getRole().equals("Manager")) {
-                JavaFXUtils.switchScenes(btnLogin, JavaFXUtils.FXMLPaths.MANAGER_MAIN_MENU.getPath());
+                JavaFXUtils.showNextScene(btnLogin, JavaFXUtils.FXMLPaths.MANAGER_MAIN_MENU.getPath());
             }
             else if (employee.getRole().equals("Librarian")) {
-                JavaFXUtils.switchScenes(btnLogin, JavaFXUtils.FXMLPaths.LIBRARIAN_MAIN_MENU.getPath());
+                JavaFXUtils.showNextScene(btnLogin, JavaFXUtils.FXMLPaths.LIBRARIAN_MAIN_MENU.getPath());
             }
         }
         else if (user.getType().equals("Customer")) {
-            JavaFXUtils.switchScenes(btnLogin, JavaFXUtils.FXMLPaths.CUSTOMER_MANI_MENU.getPath());
+            JavaFXUtils.showNextScene(btnLogin, JavaFXUtils.FXMLPaths.CUSTOMER_MAIN_MENU.getPath());
         }
+
+    }
+
+    // Resets scene (so credentials are not shown when user returns to log in scene
+    // during the same session)
+    private void resetScene() {
+
+        lblNotify.setText("Enter credentials");
+        txtFieldUsername.clear();
+        txtFieldPassword.clear();
+        txtFieldUsername.requestFocus();
 
     }
 
