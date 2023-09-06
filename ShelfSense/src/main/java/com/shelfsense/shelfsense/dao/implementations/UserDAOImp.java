@@ -8,7 +8,9 @@ import com.shelfsense.shelfsense.model.User;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class UserDAOImp implements UserDAO {
 
@@ -152,6 +154,37 @@ public class UserDAOImp implements UserDAO {
 
         int userId = getIdWithUsername(username);
         return getWithId(userId);
+
+    }
+
+
+    // endregion
+
+    // region Other methods
+
+    // Returns all ID numbers that have already been assigned to employees
+    public Set<Integer> getUsedIds() {
+
+        // Set used so that the checking of whether an ID is used is efficient
+        Set<Integer> usedIds = new HashSet<>();
+
+        String query = "SELECT UserId FROM Users";
+
+        try (Connection connection = Database.getConnection();
+        PreparedStatement ps = connection.prepareStatement(query)) {
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                usedIds.add(rs.getInt("UserId"));
+            }
+
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return usedIds;
 
     }
 

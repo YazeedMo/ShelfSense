@@ -5,6 +5,7 @@ import com.shelfsense.shelfsense.dao.interfaces.CustomerDAO;
 import com.shelfsense.shelfsense.model.Customer;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,10 +36,10 @@ public class CustomerDAOImp implements CustomerDAO {
                 String username = rs.getString("Username");
                 String password = rs.getString("Password");
                 String type = rs.getString("Type");
-                Date joinDate = rs.getDate("JoinDate");
-                Date expirydate = rs.getDate("ExpiryDate");
+                LocalDate joinDate = rs.getObject("JoinDate", LocalDate.class);
+                LocalDate expiryDate = rs.getObject("ExpiryDate", LocalDate.class);
 
-                customer = new Customer(customerId, firstName, lastName, username, password, type, joinDate, expirydate);
+                customer = new Customer(customerId, firstName, lastName, username, password, type, joinDate, expiryDate);
 
             }
         }
@@ -67,8 +68,8 @@ public class CustomerDAOImp implements CustomerDAO {
                 String username = rs.getString("Username");
                 String password = rs.getString("Password");
                 String type = rs.getString("Type");
-                Date joinDate = rs.getDate("JoinDate");
-                Date expiryDate = rs.getDate("ExpiryDate");
+                LocalDate joinDate = rs.getObject("JoinDate", LocalDate.class);
+                LocalDate expiryDate = rs.getObject("ExpiryDate", LocalDate.class);
 
                 allCustomers.add(new Customer(customerId, firstName, lastName, username, password, type, joinDate, expiryDate));
 
@@ -103,8 +104,8 @@ public class CustomerDAOImp implements CustomerDAO {
             psForUsers.setString(6, "Customer");
 
             psForCustomers.setInt(1, customer.getUserId());
-            psForCustomers.setDate(2, (Date) customer.getJoinDate());
-            psForCustomers.setDate(3, (Date) customer.getExpiryDate());
+            psForCustomers.setDate(2, java.sql.Date.valueOf(customer.getJoinDate()));
+            psForCustomers.setDate(3, java.sql.Date.valueOf(customer.getExpiryDate()));
 
             int usersResult = psForUsers.executeUpdate();
             int customersResult = psForCustomers.executeUpdate();
@@ -139,8 +140,8 @@ public class CustomerDAOImp implements CustomerDAO {
              PreparedStatement psForUsers = connection.prepareStatement(usersSQL)) {
 
             psForCustomers.setInt(1, customer.getUserId());
-            psForCustomers.setDate(2, (Date) customer.getJoinDate());
-            psForCustomers.setDate(3, (Date) customer.getExpiryDate());
+            psForCustomers.setDate(2, java.sql.Date.valueOf(customer.getJoinDate()));
+            psForCustomers.setDate(3, java.sql.Date.valueOf(customer.getExpiryDate()));
             psForCustomers.setInt(4, customer.getUserId());
 
             psForUsers.setInt(1, customer.getUserId());

@@ -23,6 +23,4 @@ public class CustomerMainMenuController {
         JavaFXUtils.showPreviousScene((Node) event.getSource());
 
     }
-
-
 }

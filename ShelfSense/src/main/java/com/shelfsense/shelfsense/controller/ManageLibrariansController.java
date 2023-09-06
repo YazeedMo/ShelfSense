@@ -2,28 +2,31 @@ package com.shelfsense.shelfsense.controller;
 
 import com.shelfsense.shelfsense.dao.implementations.EmployeeDAOImp;
 import com.shelfsense.shelfsense.model.Employee;
-import com.shelfsense.shelfsense.model.User;
 import com.shelfsense.shelfsense.util.JavaFXUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ManageLibrariansController {
 
     @FXML
     private TableView<Employee> tblViewLibrarians;
-
-    @FXML
-    private Button btnAdd;
 
     @FXML
     private Button btnEdit;
@@ -36,13 +39,60 @@ public class ManageLibrariansController {
     @FXML
     private void initialize() {
 
+        populateTblViewLibrarians();
+
+        setUpButtons();
+
+    }
+
+    @FXML
+    void btnBackClicked(ActionEvent event) {
+
+        JavaFXUtils.showPreviousScene(tblViewLibrarians);
+
+    }
+
+    @FXML
+    void btnAddClicked(ActionEvent event) {
+
+        // Show AddLibrarian window
+        Stage addLibrarianStage = new Stage();
+        addLibrarianStage.initModality(Modality.APPLICATION_MODAL);
+
+        try {
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(JavaFXUtils.FXMLPaths.ADD_LIBRARIAN.getPath())));
+            Scene scene = new Scene(root);
+            addLibrarianStage.setScene(scene);
+            addLibrarianStage.showAndWait();
+
+            // Update tblViewLibrarians after new Librarian has been added
+            populateTblViewLibrarians();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @FXML
+    void btnEditClicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnDeleteClicked(ActionEvent event) {
+
+    }
+
+    private void populateTblViewLibrarians() {
+
         List<Employee> employeeList = new ArrayList<>();
 
         // Clear initial Table View (any default columns created by Scene Builder)
         tblViewLibrarians.getColumns().clear();
 
-        // Add out own custom columns (for each attribute of the User object)
-        TableColumn<Employee, String> userIdColumn = new TableColumn<>("User ID");
+        // Add our own custom columns (for each attribute of the User object)
+        TableColumn<Employee, Integer> userIdColumn = new TableColumn<>("User ID");
         userIdColumn.setCellValueFactory(new PropertyValueFactory<>("userId"));
 
         TableColumn<Employee, String> firstNameColumn = new TableColumn<>("First Name");
@@ -85,25 +135,22 @@ public class ManageLibrariansController {
 
     }
 
-    @FXML
-    void btnBackClicked(ActionEvent event) {
+    private void setUpButtons() {
 
-        JavaFXUtils.showPreviousScene(tblViewLibrarians);
+        tblViewLibrarians.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
 
-    }
+            if (newValue != null) {
+                // A librarian is selected
+                btnEdit.setDisable(false);
+                btnDelete.setDisable(false);
+            }
+            else {
+                // No librarian is selected
+                btnEdit.setDisable(true);
+                btnDelete.setDisable(true);
+            }
 
-    @FXML
-    void btnAddClicked(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnEditClicked(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnDeleteClicked(ActionEvent event) {
+        });
 
     }
 

@@ -5,6 +5,7 @@ import com.shelfsense.shelfsense.dao.interfaces.EmployeeDAO;
 import com.shelfsense.shelfsense.model.Employee;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class EmployeeDAOImp implements EmployeeDAO {
                 String username = rs.getString("Username");
                 String password = rs.getString("Password");
                 String type = rs.getString("Type");
-                Date joinDate = rs.getDate("HireDate");
+                LocalDate joinDate = rs.getObject("HireDate", LocalDate.class);
                 String role = rs.getString("Role");
 
                 employee = new Employee(employeeId, firstName, lastName, username, password, type, joinDate, role);
@@ -67,7 +68,7 @@ public class EmployeeDAOImp implements EmployeeDAO {
                 String username = rs.getString("Username");
                 String password = rs.getString("Password");
                 String type = rs.getString("Type");
-                Date hireDate = rs.getDate("HireDate");
+                LocalDate hireDate = rs.getObject("HireDate", LocalDate.class);
                 String role = rs.getString("Role");
 
                 allEmployees.add(new Employee(employeeId, firstName, lastName, username, password, type, hireDate, role));
@@ -101,7 +102,7 @@ public class EmployeeDAOImp implements EmployeeDAO {
             psForUsers.setString(6, "Employee");
 
             psForEmployees.setInt(1, employee.getUserId());
-            psForEmployees.setDate(2, (Date) employee.getHireDate());
+            psForEmployees.setDate(2, java.sql.Date.valueOf(employee.getHireDate()));
             psForEmployees.setString(3, employee.getRole());
 
             int usersResult = psForUsers.executeUpdate();
@@ -137,7 +138,7 @@ public class EmployeeDAOImp implements EmployeeDAO {
              PreparedStatement psForUsers = connection.prepareStatement(usersSQL)) {
 
             psForEmployees.setInt(1, employee.getUserId());
-            psForEmployees.setDate(2, (Date) employee.getHireDate());
+            psForEmployees.setDate(2, java.sql.Date.valueOf(employee.getHireDate()));
             psForEmployees.setString(3, employee.getRole());
             psForEmployees.setInt(4, employee.getUserId());
 

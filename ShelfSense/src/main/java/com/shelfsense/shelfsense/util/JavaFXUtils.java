@@ -17,6 +17,7 @@ public class JavaFXUtils {
 
         LOGIN("/com/shelfsense/shelfsense/Login.fxml"),
         MANAGER_MAIN_MENU("/com/shelfsense/shelfsense/ManagerMainMenu.fxml"),
+        ADD_LIBRARIAN("/com/shelfsense/shelfsense/AddLibrarian.fxml"),
         LIBRARIAN_MAIN_MENU("/com/shelfsense/shelfsense/LibrarianMainMenu.fxml"),
         CUSTOMER_MAIN_MENU("/com/shelfsense/shelfsense/CustomerMainMenu.fxml"),
         MANAGE_LIBRARIANS("/com/shelfsense/shelfsense/ManageLibrarians.fxml");

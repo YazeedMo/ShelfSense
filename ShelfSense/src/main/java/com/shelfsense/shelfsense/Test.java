@@ -10,22 +10,20 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 public class Test {
 
     public static void main(String[] args) {
 
-        try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(Test.class.getResource(JavaFXUtils.FXMLPaths.MANAGE_LIBRARIANS.getPath())));
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+
+        LocalDate date = LocalDate.parse("2023-09-06");
+        String formattedDate = date.format(DateTimeFormatter.ofPattern("dd MMMM yyyy"));
+        System.out.println(formattedDate);
 
 
     }

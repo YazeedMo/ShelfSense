@@ -1,7 +1,3 @@
-Learn JavaFX TableView
-
-Create function to view all Librarians
-Create function to add new Librarian
 Create function to delete Librarian
 Create function to edit Librarian details
 

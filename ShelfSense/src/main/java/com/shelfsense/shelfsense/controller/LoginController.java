@@ -9,14 +9,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 import java.sql.SQLException;
 
 public class LoginController {
-
-    @FXML
-    private Button btnLogin;
 
     @FXML
     private Label lblNotify;
@@ -25,14 +23,17 @@ public class LoginController {
     private TextField txtFieldUsername;
 
     @FXML
-    private TextField txtFieldPassword;
+    private PasswordField psswrdFldPassword;
+
+    @FXML
+    private Button btnLogin;
 
     @FXML
     void btnLoginClicked(ActionEvent event) throws SQLException {
 
         // Get username and password
         String username = txtFieldUsername.getText();
-        String password = txtFieldPassword.getText();
+        String password = psswrdFldPassword.getText();
 
         if (validInput(username, password)) {
             boolean validCredentials = new LoginService().isValidCredentials(username, password);
@@ -55,7 +56,7 @@ public class LoginController {
             return false;
         } else if (password.isEmpty()) {
             lblNotify.setText("Please enter password");
-            txtFieldPassword.requestFocus();
+            psswrdFldPassword.requestFocus();
             return false;
         }
         else {
@@ -86,7 +87,7 @@ public class LoginController {
 
         lblNotify.setText("Enter credentials");
         txtFieldUsername.clear();
-        txtFieldPassword.clear();
+        psswrdFldPassword.clear();
         txtFieldUsername.requestFocus();
 
     }

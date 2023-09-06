@@ -1,33 +1,34 @@
 package com.shelfsense.shelfsense.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Customer extends User {
 
     // Customer attributes
-    private Date joinDate;
-    private Date expiryDate;
+    private LocalDate joinDate;
+    private LocalDate expiryDate;
 
     // Public Constructor
-    public Customer(int customerId, String firstName, String lastName, String username, String password, String type, Date joinDate, Date expiryDate) {
+    public Customer(int customerId, String firstName, String lastName, String username, String password, String type, LocalDate joinDate, LocalDate expiryDate) {
         super(customerId, firstName, lastName, username, password, type);
         this.joinDate = joinDate;
         this.expiryDate = expiryDate;
     }
 
     // Getters
-    public Date getJoinDate() {
+    public LocalDate getJoinDate() {
         return joinDate;
     }
-    public Date getExpiryDate() {
+    public LocalDate getExpiryDate() {
         return expiryDate;
     }
 
     // Setters
-    public void setJoinDate(Date joinDate) {
+    public void setJoinDate(LocalDate joinDate) {
         this.joinDate = joinDate;
     }
-    public void setExpiryDate(Date expiryDate) {
+    public void setExpiryDate(LocalDate expiryDate) {
         this.expiryDate = expiryDate;
     }
 

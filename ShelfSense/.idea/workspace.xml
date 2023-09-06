@@ -5,15 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e4617e5f-d3ac-4188-8137-ee95c46e176e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Documentation/Backlog.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Documentation/Backlog.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/controller/CustomerMainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/controller/CustomerMainMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/controller/LibrarianMainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/controller/LibrarianMainMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/controller/ManagerMainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/controller/ManagerMainMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/controller/ManageLibrariansController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/controller/ManageLibrariansController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/implementations/CustomerDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/implementations/CustomerDAOImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/implementations/EmployeeDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/implementations/EmployeeDAOImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/implementations/UserDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/implementations/UserDAOImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/model/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/model/Employee.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/util/JavaFXUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/util/JavaFXUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/util/Session.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/util/Session.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/shelfsense/shelfsense/CustomerMainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/shelfsense/shelfsense/CustomerMainMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/shelfsense/shelfsense/LibrarianMainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/shelfsense/shelfsense/LibrarianMainMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/shelfsense/shelfsense/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/shelfsense/shelfsense/Login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/shelfsense/shelfsense/ManageLibrarians.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/shelfsense/shelfsense/ManageLibrarians.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/shelfsense/shelfsense/ManagerMainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/shelfsense/shelfsense/ManagerMainMenu.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,16 +55,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "D:/YAZEED/Departments/Daily/Programming/Projects/GitHub/ShelfSense/ShelfSense",
-    "settings.editor.selected.configurable": "testing.instrumented.configuration"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/YAZEED/Departments/Daily/Programming/Projects/GitHub/ShelfSense/ShelfSense&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;testing.instrumented.configuration&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -147,8 +154,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Entry" />
-        <item itemvalue="JUnit.LoginServiceTest" />
         <item itemvalue="Application.Test" />
+        <item itemvalue="JUnit.LoginServiceTest" />
         <item itemvalue="JUnit.LoginServiceTest.trueForValidCredentials" />
         <item itemvalue="JUnit.LoginServiceTest.falseForEmptyUsername" />
       </list>

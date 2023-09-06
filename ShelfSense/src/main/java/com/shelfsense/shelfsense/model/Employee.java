@@ -1,22 +1,22 @@
 package com.shelfsense.shelfsense.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Employee extends User {
 
     // Employee attributes
-    private Date hireDate;
+    private LocalDate hireDate;
     private String role;
 
     // Public constructor
-    public Employee(int employeeId, String firstName, String lastName, String username, String password, String type, Date hireDate, String role) {
+    public Employee(int employeeId, String firstName, String lastName, String username, String password, String type, LocalDate hireDate, String role) {
         super(employeeId, firstName, lastName, username, password, type);
         this.hireDate = hireDate;
         this.role = role;
     }
 
     // Getters
-    public Date getHireDate() {
+    public LocalDate getHireDate() {
         return hireDate;
     }
     public String getRole() {
@@ -24,7 +24,7 @@ public class Employee extends User {
     }
 
     // Setters
-    public void setHireDate(Date hireDate) {
+    public void setHireDate(LocalDate hireDate) {
         this.hireDate = hireDate;
     }
     public void setRole(String role) {

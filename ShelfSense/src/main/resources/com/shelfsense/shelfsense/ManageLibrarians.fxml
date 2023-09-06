@@ -20,8 +20,8 @@
       <HBox alignment="CENTER" prefHeight="80.0" prefWidth="665.0" spacing="50.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#btnAddClicked" prefWidth="60.0" text="Add" />
-            <Button fx:id="btnEdit" mnemonicParsing="false" onAction="#btnEditClicked" prefWidth="60.0" text="Edit" />
-            <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#btnDeleteClicked" prefWidth="60.0" text="Delete" />
+            <Button fx:id="btnEdit" disable="true" mnemonicParsing="false" onAction="#btnEditClicked" prefWidth="60.0" text="Edit" />
+            <Button fx:id="btnDelete" disable="true" mnemonicParsing="false" onAction="#btnDeleteClicked" prefWidth="60.0" text="Delete" />
          </children>
       </HBox>
    </bottom>
