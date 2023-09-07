@@ -120,7 +120,7 @@ public class EmployeeDAOImp implements EmployeeDAO {
         String employeesSQL = "UPDATE Employees SET " +
                 "EmployeeID = ?, " +
                 "HireDate = ?, " +
-                "Role = ?, " +
+                "Role = ? " +
                 "WHERE EmployeeID = ?;";
 
         // SQL to update the User table
@@ -130,7 +130,7 @@ public class EmployeeDAOImp implements EmployeeDAO {
                 "Lastname = ?, " +
                 "Username = ?, " +
                 "Password = ?, " +
-                "Type = ?, " +
+                "Type = ? " +
                 "WHERE UserId = ?";
 
         try (Connection connection = Database.getConnection();
@@ -143,7 +143,7 @@ public class EmployeeDAOImp implements EmployeeDAO {
             psForEmployees.setInt(4, employee.getUserId());
 
             psForUsers.setInt(1, employee.getUserId());
-            psForUsers.setString(2, employee.getUsername());
+            psForUsers.setString(2, employee.getFirstName());
             psForUsers.setString(3, employee.getLastName());
             psForUsers.setString(4, employee.getUsername());
             psForUsers.setString(5, employee.getPassword());

@@ -44,6 +44,8 @@ public class AddLibrarianController {
 
     private final EmployeeService employeeService = new EmployeeService();
 
+    private static Employee selectedEmployee;
+
     @FXML
     private void initialize() {
 
@@ -65,6 +67,19 @@ public class AddLibrarianController {
         psswrdFldPassword.textProperty().addListener(fieldChangeListener);
         datePickerHireDate.valueProperty().addListener(fieldChangeListener);
         comboBoxRole.valueProperty().addListener(fieldChangeListener);
+
+        // This will run if user chose "Edit" in ManageLibrarians window
+        if (selectedEmployee != null) {
+            comboBoxId.setValue(selectedEmployee.getUserId());
+            txtFieldFirstName.setText(selectedEmployee.getFirstName());
+            txtFieldLastname.setText(selectedEmployee.getLastName());
+            txtFieldUsername.setText(selectedEmployee.getUsername());
+            psswrdFldPassword.setText(selectedEmployee.getPassword());
+            datePickerHireDate.setValue(selectedEmployee.getHireDate());
+            comboBoxRole.setValue(selectedEmployee.getRole());
+            btnAdd.setText("Submit");
+        }
+
     }
 
     @FXML
@@ -84,12 +99,14 @@ public class AddLibrarianController {
         // Create Employee object using details from each field
         Employee employee = new Employee(id, firstName, lastName, username, password, "Employee", hireDate, role);
 
-        // Insert new Employee into the Database
-        try {
-            employeeDAOImp.insert(employee);
-        } catch (SQLException e) {
-            e.printStackTrace();
+        if (btnAdd.getText().equals("Add")) {
+            employeeService.addLibrarian(employee);
         }
+        else {
+            employeeService.editLibrarian(employee);
+        }
+
+        selectedEmployee = null;
 
         // Close the window
         JavaFXUtils.getCurrentStage(btnAdd).close();
@@ -101,6 +118,10 @@ public class AddLibrarianController {
 
         JavaFXUtils.getCurrentStage(btnAdd).close();
 
+    }
+
+    public static void setSelectedEmployee(Employee employee) {
+        selectedEmployee = employee;
     }
 
     // Handles the logic when user interacts with the fields

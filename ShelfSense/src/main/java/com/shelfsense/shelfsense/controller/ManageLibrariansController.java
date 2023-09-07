@@ -2,24 +2,18 @@ package com.shelfsense.shelfsense.controller;
 
 import com.shelfsense.shelfsense.dao.implementations.EmployeeDAOImp;
 import com.shelfsense.shelfsense.model.Employee;
+import com.shelfsense.shelfsense.services.EmployeeService;
 import com.shelfsense.shelfsense.util.JavaFXUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class ManageLibrariansController {
 
@@ -35,6 +29,8 @@ public class ManageLibrariansController {
     private Employee selectedEmployee;
 
     private final EmployeeDAOImp employeeDAOImp = new EmployeeDAOImp();
+
+    private final EmployeeService employeeService = new EmployeeService();
 
     @FXML
     private void initialize() {
@@ -55,27 +51,19 @@ public class ManageLibrariansController {
     @FXML
     void btnAddClicked(ActionEvent event) {
 
-        // Show AddLibrarian window
-        Stage addLibrarianStage = new Stage();
-        addLibrarianStage.initModality(Modality.APPLICATION_MODAL);
+        employeeService.showAddLibrarianScene();
 
-        try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(JavaFXUtils.FXMLPaths.ADD_LIBRARIAN.getPath())));
-            Scene scene = new Scene(root);
-            addLibrarianStage.setScene(scene);
-            addLibrarianStage.showAndWait();
-
-            // Update tblViewLibrarians after new Librarian has been added
-            updateTblViewLibrarians();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        // Update tblViewLibrarians after new Librarian has been added
+        updateTblViewLibrarians();
 
     }
 
     @FXML
     void btnEditClicked(ActionEvent event) {
+
+        employeeService.showEditLibrarianScene(selectedEmployee);
+
+        updateTblViewLibrarians();
 
     }
 
@@ -83,16 +71,8 @@ public class ManageLibrariansController {
     void btnDeleteClicked(ActionEvent event) {
 
         if (selectedEmployee != null) {
-            if (confirmDeletion(selectedEmployee)) {
-
-                try {
-                    employeeDAOImp.delete(selectedEmployee);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-
-                updateTblViewLibrarians();
-            }
+            employeeService.deleteEmployee(selectedEmployee);
+            updateTblViewLibrarians();
         }
     }
 
@@ -164,19 +144,6 @@ public class ManageLibrariansController {
             }
 
         });
-
-    }
-
-    // Show an alert box to confirm User deletion
-    private boolean confirmDeletion(Employee employee) {
-
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setHeaderText("Are you sure you want to delete the following employee?");
-        alert.setContentText("Employee ID: " + employee.getUserId() + "\nFirst Name: " + employee.getFirstName());
-
-        alert.showAndWait();
-
-        return alert.getResult() == ButtonType.OK;
 
     }
 
