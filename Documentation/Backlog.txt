@@ -18,4 +18,18 @@ Create function to edit Loan
 
 Create function to reserve Book
 
+Make sure Username Administrator cannot be deleted
+
 Design and create a better UI
+
+
+
+--------------------------------------------------------
+
+Temporary pseudo code - Deleting Librarian:
+
+1. Click on user
+2. Choose Delete
+3. Open warning window
+4. Confirm? - handle deletion with DAOImp classes
+

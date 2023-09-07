@@ -10,9 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -34,14 +32,16 @@ public class ManageLibrariansController {
     @FXML
     private Button btnDelete;
 
+    private Employee selectedEmployee;
 
+    private final EmployeeDAOImp employeeDAOImp = new EmployeeDAOImp();
 
     @FXML
     private void initialize() {
 
-        populateTblViewLibrarians();
+        updateTblViewLibrarians();
 
-        setUpButtons();
+        updateButtons();
 
     }
 
@@ -66,7 +66,7 @@ public class ManageLibrariansController {
             addLibrarianStage.showAndWait();
 
             // Update tblViewLibrarians after new Librarian has been added
-            populateTblViewLibrarians();
+            updateTblViewLibrarians();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -82,9 +82,21 @@ public class ManageLibrariansController {
     @FXML
     void btnDeleteClicked(ActionEvent event) {
 
+        if (selectedEmployee != null) {
+            if (confirmDeletion(selectedEmployee)) {
+
+                try {
+                    employeeDAOImp.delete(selectedEmployee);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+                updateTblViewLibrarians();
+            }
+        }
     }
 
-    private void populateTblViewLibrarians() {
+    private void updateTblViewLibrarians() {
 
         List<Employee> employeeList = new ArrayList<>();
 
@@ -135,12 +147,13 @@ public class ManageLibrariansController {
 
     }
 
-    private void setUpButtons() {
+    private void updateButtons() {
 
         tblViewLibrarians.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
 
             if (newValue != null) {
                 // A librarian is selected
+                selectedEmployee = newValue;
                 btnEdit.setDisable(false);
                 btnDelete.setDisable(false);
             }
@@ -151,6 +164,19 @@ public class ManageLibrariansController {
             }
 
         });
+
+    }
+
+    // Show an alert box to confirm User deletion
+    private boolean confirmDeletion(Employee employee) {
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("Are you sure you want to delete the following employee?");
+        alert.setContentText("Employee ID: " + employee.getUserId() + "\nFirst Name: " + employee.getFirstName());
+
+        alert.showAndWait();
+
+        return alert.getResult() == ButtonType.OK;
 
     }
 
