@@ -14,43 +14,6 @@ import java.util.Set;
 
 public class UserDAOImp implements UserDAO {
 
-    // region Private Methods
-
-    private int getIdWithUsername(String username) throws SQLException {
-
-        String query = "SELECT UserId FROM Users WHERE Username = ?";
-
-        try (Connection connection = Database.getConnection();
-             PreparedStatement ps = connection.prepareStatement(query)) {
-
-            ps.setString(1, username);
-            ResultSet rs = ps.executeQuery();
-
-            rs.next();
-            return rs.getInt("UserId");
-
-        }
-    }
-
-    private String getTypeWithId(int userId) throws SQLException {
-
-        String query = "SELECT Type FROM Users WHERE UserId = ?";
-
-        try (Connection connection = Database.getConnection();
-             PreparedStatement ps = connection.prepareStatement(query)) {
-
-            ps.setString(1, String.valueOf(userId));
-            ResultSet rs = ps.executeQuery();
-
-            rs.next();
-            return rs.getString("Type");
-
-        }
-
-    }
-
-    // endregion
-
     // region GenericDAO Methods
 
     @Override
@@ -62,7 +25,7 @@ public class UserDAOImp implements UserDAO {
         List<Employee> allEmployees = new EmployeeDAOImp().getAll();
         List<Customer> allCustomers = new CustomerDAOImp().getAll();
 
-        // Combine both lists into allUser
+        // Combine both lists into allUsers
         allUsers.addAll(allEmployees);
         allUsers.addAll(allCustomers);
 
@@ -87,20 +50,49 @@ public class UserDAOImp implements UserDAO {
 
     @Override
     public int insert(User person) throws SQLException {
-        return 0;
+
+        String userType = getTypeWithId(person.getUserId());
+
+        if (userType.equalsIgnoreCase("Customer")) {
+            return new CustomerDAOImp().insert((Customer) person);
+        }
+        else {
+            return new EmployeeDAOImp().insert((Employee) person);
+        }
     }
 
     @Override
     public int update(User person) throws SQLException {
-        return 0;
+
+        String userType = getTypeWithId(person.getUserId());
+
+        if (userType.equalsIgnoreCase("Customer")) {
+            return new CustomerDAOImp().update((Customer) person);
+        }
+        else {
+            return new EmployeeDAOImp().update((Employee) person);
+        }
     }
 
     @Override
     public int delete(User person) throws SQLException {
-        return 0;
+
+        // SQL to update Users table
+        // Cascade delete in database so only need to specify root table delete
+        String usersSQL = "DELETE FROM Users WHERE UserId = ?";
+
+        try (Connection connection = Database.getConnection();
+             PreparedStatement ps = connection.prepareStatement(usersSQL)) {
+
+            ps.setInt(1, person.getUserId());
+
+            return ps.executeUpdate();
+
+        }
     }
 
     // endregion
+
 
     // region UserDAOImp methods
 
@@ -146,7 +138,6 @@ public class UserDAOImp implements UserDAO {
             return rs.getString("Password");
 
         }
-
     }
 
     @Override
@@ -157,12 +148,25 @@ public class UserDAOImp implements UserDAO {
 
     }
 
+    @Override
+    public String getTypeWithId(int userId) throws SQLException {
 
-    // endregion
+        String query = "SELECT UserType FROM UserRoles " +
+                "WHERE UserId = ?";
 
-    // region Other methods
+        try (Connection connection = Database.getConnection();
+             PreparedStatement ps = connection.prepareStatement(query)) {
+
+            ps.setInt(1, userId);
+            ResultSet rs = ps.executeQuery();
+
+            rs.next();
+            return rs.getString("UserType");
+        }
+    }
 
     // Returns all ID numbers that have already been assigned to employees
+    @Override
     public Set<Integer> getUsedIds() {
 
         // Set used so that the checking of whether an ID is used is efficient
@@ -171,7 +175,7 @@ public class UserDAOImp implements UserDAO {
         String query = "SELECT UserId FROM Users";
 
         try (Connection connection = Database.getConnection();
-        PreparedStatement ps = connection.prepareStatement(query)) {
+             PreparedStatement ps = connection.prepareStatement(query)) {
 
             ResultSet rs = ps.executeQuery();
 
@@ -186,6 +190,26 @@ public class UserDAOImp implements UserDAO {
 
         return usedIds;
 
+    }
+
+    // endregion
+
+
+    // region Private Methods
+
+    private int getIdWithUsername(String username) throws SQLException {
+
+        String query = "SELECT UserId FROM Users WHERE Username = ?";
+
+        try (Connection connection = Database.getConnection();
+             PreparedStatement ps = connection.prepareStatement(query)) {
+
+            ps.setString(1, username);
+            ResultSet rs = ps.executeQuery();
+
+            rs.next();
+            return rs.getInt("UserId");
+        }
     }
 
     // endregion

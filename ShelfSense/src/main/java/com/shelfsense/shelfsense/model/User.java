@@ -8,16 +8,14 @@ public abstract class User {
     private String lastName;
     private String username;
     private String password;
-    private String type;
 
     // Public constructor
-    public User(int userId, String firstName, String lastName, String username, String password, String type) {
+    public User(int userId, String firstName, String lastName, String username, String password) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.password = password;
-        this.type = type;
     }
 
     // Getters
@@ -36,9 +34,6 @@ public abstract class User {
     public String getPassword() {
         return password;
     }
-    public String getType() {
-        return type;
-    }
 
     // Setters
     public void setUserId(int userId) {
@@ -56,9 +51,6 @@ public abstract class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    public void setType (String type) {
-        this.type = type;
-    }
 
     @Override
     public String toString() {
@@ -68,7 +60,6 @@ public abstract class User {
                 ", lastName='" + lastName + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", type='" + type + '\'' +
                 '}';
     }
 }

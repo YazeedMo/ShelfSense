@@ -2,13 +2,13 @@ package com.shelfsense.shelfsense.dao.interfaces;
 
 import com.shelfsense.shelfsense.model.Employee;
 
-import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 public interface EmployeeDAO extends GenericDAO<Employee> {
 
-    Date getHiredate(int userId) throws SQLException;
+    LocalDate getHireDate(int userId) throws SQLException;
 
-    String getRole(int userId) throws SQLException;
+    public String getPosition (Employee employee);
 
 }

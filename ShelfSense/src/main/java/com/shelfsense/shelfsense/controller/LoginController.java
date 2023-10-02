@@ -1,6 +1,8 @@
 package com.shelfsense.shelfsense.controller;
 
+import com.shelfsense.shelfsense.dao.implementations.EmployeeDAOImp;
 import com.shelfsense.shelfsense.dao.implementations.UserDAOImp;
+import com.shelfsense.shelfsense.dao.interfaces.UserDAO;
 import com.shelfsense.shelfsense.model.Employee;
 import com.shelfsense.shelfsense.model.User;
 import com.shelfsense.shelfsense.services.LoginService;
@@ -28,6 +30,9 @@ public class LoginController {
     @FXML
     private Button btnLogin;
 
+    private final LoginService loginService = new LoginService();
+    private final UserDAO userDAO = new UserDAOImp();
+
     @FXML
     void btnLoginClicked(ActionEvent event) throws SQLException {
 
@@ -36,11 +41,11 @@ public class LoginController {
         String password = psswrdFldPassword.getText();
 
         if (validInput(username, password)) {
-            boolean validCredentials = new LoginService().isValidCredentials(username, password);
+            boolean validCredentials = loginService.isValidCredentials(username, password);
             if (validCredentials) {
                 resetScene();
-                User user = new UserDAOImp().getWithUsername(username);
-                showRelevantMenu(user);
+                User user = userDAO.getWithUsername(username);
+                loginService.showRelevantMenu(user, btnLogin);
             }
             else {
                 lblNotify.setText("Invalid Username or password");
@@ -62,23 +67,6 @@ public class LoginController {
         else {
             return true;
         }
-    }
-
-    private void showRelevantMenu(User user) {
-
-        if (user.getType().equals("Employee")) {
-            Employee employee = (Employee) user;
-            if (employee.getRole().equals("Manager")) {
-                JavaFXUtils.showNextScene(btnLogin, JavaFXUtils.FXMLPaths.MANAGER_MAIN_MENU.getPath());
-            }
-            else if (employee.getRole().equals("Librarian")) {
-                JavaFXUtils.showNextScene(btnLogin, JavaFXUtils.FXMLPaths.LIBRARIAN_MAIN_MENU.getPath());
-            }
-        }
-        else if (user.getType().equals("Customer")) {
-            JavaFXUtils.showNextScene(btnLogin, JavaFXUtils.FXMLPaths.CUSTOMER_MAIN_MENU.getPath());
-        }
-
     }
 
     // Resets scene (so credentials are not shown when user returns to log in scene

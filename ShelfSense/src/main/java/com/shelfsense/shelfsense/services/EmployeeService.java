@@ -1,8 +1,10 @@
 package com.shelfsense.shelfsense.services;
 
-import com.shelfsense.shelfsense.controller.AddLibrarianController;
+import com.shelfsense.shelfsense.controller.AddEmployeeController;
 import com.shelfsense.shelfsense.dao.implementations.EmployeeDAOImp;
 import com.shelfsense.shelfsense.dao.implementations.UserDAOImp;
+import com.shelfsense.shelfsense.dao.interfaces.EmployeeDAO;
+import com.shelfsense.shelfsense.dao.interfaces.UserDAO;
 import com.shelfsense.shelfsense.model.Employee;
 import com.shelfsense.shelfsense.util.JavaFXUtils;
 import javafx.collections.FXCollections;
@@ -24,11 +26,14 @@ public class EmployeeService {
 
     private static final int MIN_PASSWORD_LENGTH = 5;
 
+    private final UserDAO userDAO = new UserDAOImp();
+    private final EmployeeDAO employeeDAO = new EmployeeDAOImp();
+
     // Returns an ObservableList of ID numbers that have not yet been used
     public ObservableList<Integer> getAvailableIds() {
 
         // Fetch used IDs from the database
-        Set<Integer> usedIds = new UserDAOImp().getUsedIds();
+        Set<Integer> usedIds = userDAO.getUsedIds();
 
         // Determine available IDs
         ObservableList<Integer> availableIds = FXCollections.observableArrayList();
@@ -46,16 +51,14 @@ public class EmployeeService {
         return MIN_PASSWORD_LENGTH;
     }
 
-    public EmployeeDAOImp employeeDAOImp = new EmployeeDAOImp();
-
-    public void showAddLibrarianScene() {
+    public void showAddEmployeeScene() {
 
         // Show AddLibrarian window
         Stage addLibrarianStage = new Stage();
         addLibrarianStage.initModality(Modality.APPLICATION_MODAL);
 
         try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(JavaFXUtils.FXMLPaths.ADD_LIBRARIAN.getPath())));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(JavaFXUtils.FXMLPaths.ADD_EMPLOYEE.getPath())));
             Scene scene = new Scene(root);
             addLibrarianStage.setScene(scene);
             addLibrarianStage.showAndWait();
@@ -65,29 +68,30 @@ public class EmployeeService {
         }
     }
 
-    public void addLibrarian(Employee librarian) {
+    public void addEmployee(Employee employee) {
 
         try {
-            employeeDAOImp.insert(librarian);
+            employeeDAO.insert(employee);
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
     }
 
-    public void showEditLibrarianScene(Employee employee) {
+    public void showEditEmployeeScene(Employee employee) {
 
-        AddLibrarianController.setSelectedEmployee(employee);
+        AddEmployeeController.setSelectedEmployee(employee);
 
-        showAddLibrarianScene();
+        showAddEmployeeScene();
 
     }
 
-    public void editLibrarian(Employee employee) {
+    public void editEmployee(Employee employee) {
 
         try {
-            employeeDAOImp.update(employee);
-        } catch (SQLException e) {
+            employeeDAO.update(employee);
+        }
+        catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -97,7 +101,7 @@ public class EmployeeService {
 
         if (confirmDeletion(employee)) {
             try {
-                employeeDAOImp.delete(employee);
+                employeeDAO.delete(employee);
             } catch (SQLException e) {
                 e.printStackTrace();
             }

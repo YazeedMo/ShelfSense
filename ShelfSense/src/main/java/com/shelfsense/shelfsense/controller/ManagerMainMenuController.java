@@ -13,7 +13,7 @@ public class ManagerMainMenuController {
     }
 
     @FXML
-    void btnManageLibrariansClicked(ActionEvent event) {
+    void btnManageEmployeesClicked(ActionEvent event) {
         JavaFXUtils.showNextScene((Node) event.getSource(), JavaFXUtils.FXMLPaths.MANAGE_LIBRARIANS.getPath());
     }
 

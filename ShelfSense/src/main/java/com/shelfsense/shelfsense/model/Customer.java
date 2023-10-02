@@ -1,7 +1,6 @@
 package com.shelfsense.shelfsense.model;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Customer extends User {
 
@@ -10,8 +9,8 @@ public class Customer extends User {
     private LocalDate expiryDate;
 
     // Public Constructor
-    public Customer(int customerId, String firstName, String lastName, String username, String password, String type, LocalDate joinDate, LocalDate expiryDate) {
-        super(customerId, firstName, lastName, username, password, type);
+    public Customer(int customerId, String firstName, String lastName, String username, String password, LocalDate joinDate, LocalDate expiryDate) {
+        super(customerId, firstName, lastName, username, password);
         this.joinDate = joinDate;
         this.expiryDate = expiryDate;
     }
@@ -32,6 +31,8 @@ public class Customer extends User {
         this.expiryDate = expiryDate;
     }
 
+    // Add Customer-specific functionalities here
+
     @Override
     public String toString() {
         return "User{" +
@@ -40,7 +41,6 @@ public class Customer extends User {
                 ", lastName='" + super.getLastName() + '\'' +
                 ", username='" + super.getUsername() + '\'' +
                 ", password='" + super.getPassword() + '\'' +
-                ", Type='" + super.getType() + '\'' +
                 ", joinDate='" + this.joinDate + '\'' +
                 ", expiryDate='" + this.expiryDate + '\'' +
                 '}';

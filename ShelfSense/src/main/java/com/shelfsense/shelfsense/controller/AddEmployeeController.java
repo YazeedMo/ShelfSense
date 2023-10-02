@@ -1,7 +1,8 @@
 package com.shelfsense.shelfsense.controller;
 
-import com.shelfsense.shelfsense.dao.implementations.EmployeeDAOImp;
 import com.shelfsense.shelfsense.model.Employee;
+import com.shelfsense.shelfsense.model.Librarian;
+import com.shelfsense.shelfsense.model.Manager;
 import com.shelfsense.shelfsense.services.EmployeeService;
 import com.shelfsense.shelfsense.util.JavaFXUtils;
 import javafx.beans.value.ChangeListener;
@@ -10,13 +11,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-import java.sql.SQLException;
 import java.time.LocalDate;
 
-public class AddLibrarianController {
+public class AddEmployeeController {
 
     @FXML
-    private Label lblNotifications;
+    public Label lblNotifications;
 
     @FXML
     private ComboBox<Integer> comboBoxId;
@@ -37,7 +37,7 @@ public class AddLibrarianController {
     private DatePicker datePickerHireDate;
 
     @FXML
-    private ComboBox<String> comboBoxRole;
+    private ComboBox<String> comboBoxPosition;
 
     @FXML
     private Button btnAdd;
@@ -56,7 +56,7 @@ public class AddLibrarianController {
         datePickerHireDate.setEditable(false);
 
         // Setup comboBoxRole
-        comboBoxRole.getItems().addAll("Librarian", "Manager");
+        comboBoxPosition.getItems().addAll("Librarian", "Manager");
 
         // Initialize a FieldChangeListener and attach it to each field
         FieldChangeListener fieldChangeListener = new FieldChangeListener();
@@ -66,17 +66,18 @@ public class AddLibrarianController {
         txtFieldUsername.textProperty().addListener(fieldChangeListener);
         psswrdFldPassword.textProperty().addListener(fieldChangeListener);
         datePickerHireDate.valueProperty().addListener(fieldChangeListener);
-        comboBoxRole.valueProperty().addListener(fieldChangeListener);
+        comboBoxPosition.valueProperty().addListener(fieldChangeListener);
 
         // This will run if user chose "Edit" in ManageLibrarians window
         if (selectedEmployee != null) {
+            comboBoxId.setDisable(true);
             comboBoxId.setValue(selectedEmployee.getUserId());
             txtFieldFirstName.setText(selectedEmployee.getFirstName());
             txtFieldLastname.setText(selectedEmployee.getLastName());
             txtFieldUsername.setText(selectedEmployee.getUsername());
             psswrdFldPassword.setText(selectedEmployee.getPassword());
             datePickerHireDate.setValue(selectedEmployee.getHireDate());
-            comboBoxRole.setValue(selectedEmployee.getRole());
+            comboBoxPosition.setValue(selectedEmployee.getPosition());
             btnAdd.setText("Submit");
         }
 
@@ -85,25 +86,13 @@ public class AddLibrarianController {
     @FXML
     void btnAddClicked(ActionEvent event) {
 
-        EmployeeDAOImp employeeDAOImp = new EmployeeDAOImp();
-
-        // Get the values in each field
-        int id = comboBoxId.getValue();
-        String firstName = txtFieldFirstName.getText();
-        String lastName = txtFieldLastname.getText();
-        String username = txtFieldUsername.getText();
-        String password = psswrdFldPassword.getText();
-        LocalDate hireDate = datePickerHireDate.getValue();
-        String role = comboBoxRole.getValue();
-
-        // Create Employee object using details from each field
-        Employee employee = new Employee(id, firstName, lastName, username, password, "Employee", hireDate, role);
+        Employee employee = createEmployee();
 
         if (btnAdd.getText().equals("Add")) {
-            employeeService.addLibrarian(employee);
+            employeeService.addEmployee(employee);
         }
         else {
-            employeeService.editLibrarian(employee);
+            employeeService.editEmployee(employee);
         }
 
         selectedEmployee = null;
@@ -132,10 +121,10 @@ public class AddLibrarianController {
             updateAddButtonState();
         }
 
-        boolean validDetails = false;
-
         // Updates button state according to validity of details given in the fields
         private void updateAddButtonState() {
+
+            boolean validDetails = false;
 
             boolean allFieldsFilled = areAllFieldsFilled();
             boolean validPassword = isPasswordValid();
@@ -165,7 +154,7 @@ public class AddLibrarianController {
                     !txtFieldUsername.getText().isEmpty() &&
                     !psswrdFldPassword.getText().isEmpty() &&
                     datePickerHireDate.getValue() != null &&
-                    comboBoxRole.getValue() != null;
+                    comboBoxPosition.getValue() != null;
 
         }
 
@@ -173,6 +162,25 @@ public class AddLibrarianController {
         private boolean isPasswordValid() {
             int numPasswordCharacters = psswrdFldPassword.getText().length();
             return numPasswordCharacters >= employeeService.getMinPasswordLength();
+        }
+    }
+
+    private Employee createEmployee() {
+
+        // Get the values in each field
+        int id = comboBoxId.getValue();
+        String firstName = txtFieldFirstName.getText();
+        String lastName = txtFieldLastname.getText();
+        String username = txtFieldUsername.getText();
+        String password = psswrdFldPassword.getText();
+        LocalDate hireDate = datePickerHireDate.getValue();
+        String position = comboBoxPosition.getValue();
+
+        if (position.equalsIgnoreCase("Manager")) {
+            return new Manager(id, firstName, lastName, username, password, hireDate, position);
+        }
+        else {
+            return new Librarian(id, firstName, lastName, username, password, hireDate, position);
         }
     }
 }

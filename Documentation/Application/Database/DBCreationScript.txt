@@ -1,23 +1,44 @@
+-- ========================================================================================
+-- DROPPING DATABASE
+-- ========================================================================================
+
 DROP DATABASE IF EXISTS ShelfSenseDB;
 CREATE DATABASE ShelfSenseDB;
 
 USE ShelfSenseDB;
 
+
+-- ========================================================================================
+-- TABLE CREATION
+-- ========================================================================================
+
+
 CREATE TABLE Users (
-	UserId INT PRIMARY KEY,
+	UserId INT AUTO_INCREMENT PRIMARY KEY,
     FirstName VARCHAR(255) NOT NULL,
     LastName VARCHAR(255) NOT NULL,
-    Username VARCHAR(255) NOT NULL,
-    Password VARCHAR(255) NOT NULL,
-    Type VARCHAR(255) NOT NULL CHECK (Type IN ('Employee', 'Customer'))   
+    Username VARCHAR(255) NOT NULL UNIQUE,
+    Password VARCHAR(255) NOT NULL
 );
 
 
 CREATE TABLE Employees (
 	EmployeeId INT PRIMARY KEY,
     HireDate DATE,
-    Role VARCHAR(20) NOT NULL,
-    FOREIGN KEY (EmployeeId) references Users(UserId)
+    FOREIGN KEY (EmployeeId) references Users(UserId) ON DELETE CASCADE
+);
+
+
+CREATE TABLE Managers (
+	ManagerId INT PRIMARY KEY,
+    FOREIGN KEY (ManagerId) REFERENCES Employees(EmployeeId) ON DELETE CASCADE
+
+);
+
+
+CREATE TABLE Librarians (
+	LibrarianId INT PRIMARY KEY,
+    FOREIGN KEY (LibrarianId) REFERENCES Employees(EmployeeId) ON DELETE CASCADE
 );
 
 
@@ -25,8 +46,9 @@ CREATE TABLE Customers (
 	CustomerId INT PRIMARY KEY,
     JoinDate DATE,
     ExpiryDate DATE,
-    FOREIGN KEY (CustomerId) references Users(UserId)
+    FOREIGN KEY (CustomerId) references Users(UserId) ON DELETE CASCADE
 );
+
 
 CREATE TABLE Books (
 	BookID INT PRIMARY KEY,
@@ -40,36 +62,54 @@ CREATE TABLE Books (
     Quantity INT
 );
 
+
 CREATE TABLE Loans (
 	LoanID INT PRIMARY KEY,
     BookID INT,
     CustomerID INT,
     BorrowedDate DATE,
     ReturnedDate DATE,
-    FOREIGN KEY (BookID) REFERENCES BOOKS(BookID),
-    FOREIGN KEY (CustomerID) REFERENCES CUSTOMERS(CustomerID)
+    FOREIGN KEY (BookID) REFERENCES Books(BookID),
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID) ON DELETE CASCADE
 );
 
 
-INSERT INTO Users (UserId, FirstName, LastName, Username, Password, Type)
-VALUES
-(1, 'Admin', 'Tester', 'admin', 'A.Tester', 'Employee'),
-(2, 'Carly', 'Johnson', 'carly', 'C.Johnson', 'Employee'),
-(3, 'David', 'Smith', 'david', 'D.Smith', 'Employee'),
-(4, 'Sarah', 'Wiiliams', 'sarah', 'S.Williams', 'Employee'),
-(5, 'John', 'Doe', 'john', 'J.Doe', 'Customer'),
-(6, 'Jane', 'Smith', 'jane', 'J.Smith', 'Customer'),
-(7, 'Micky', 'Pearson', 'micky', 'M.Pearson', 'Customer'),
-(8, 'Emily', 'Brown', 'emily', 'E.Brown', 'Customer'),
-(9, 'Danny', 'Wilson', 'danny', 'D.Wilson', 'Customer');
+-- ========================================================================================
+-- INSERTS
+-- ========================================================================================
 
 
-INSERT INTO Employees (EmployeeId, HireDate, Role)
+INSERT INTO Users (UserId, FirstName, LastName, Username, Password)
 VALUES
-(1, '2023-07-22', 'Manager'),
-(2, '2023-07-22', 'Librarian'),
-(3, '2023-07-22', 'Librarian'),
-(4, '2023-07-22', 'Librarian');
+(1, 'Admin', 'Tester', 'admin', 'A.Tester'),
+(2, 'Carly', 'Johnson', 'carly', 'C.Johnson'),
+(3, 'David', 'Smith', 'david', 'D.Smith'),
+(4, 'Sarah', 'Wiiliams', 'sarah', 'S.Williams'),
+(5, 'John', 'Doe', 'john', 'J.Doe'),
+(6, 'Jane', 'Smith', 'jane', 'J.Smith'),
+(7, 'Micky', 'Pearson', 'micky', 'M.Pearson'),
+(8, 'Emily', 'Brown', 'emily', 'E.Brown'),
+(9, 'Danny', 'Wilson', 'danny', 'D.Wilson');
+
+
+INSERT INTO Employees (EmployeeId, HireDate)
+VALUES
+(1, '2023-07-22'),
+(2, '2023-07-22'),
+(3, '2023-07-22'),
+(4, '2023-07-22');
+
+
+INSERT INTO Managers (ManagerId)
+VALUES
+(1);
+
+
+INSERT INTO Librarians (LibrarianId)
+VALUES
+(2),
+(3),
+(4);
 
 
 INSERT INTO Customers (CustomerId, JoinDate, ExpiryDate)
@@ -97,3 +137,68 @@ VALUES
 (3, 3, 6, '2022-03-01', '2022-03-14'),
 (4, 4, 7, '2022-04-01', '2022-04-12'),
 (5, 5, 8, '2022-05-01', '2022-05-18');
+
+
+-- ========================================================================================
+-- CREATING VIEWS
+-- ========================================================================================
+
+
+CREATE VIEW UsersAndEmployees AS
+SELECT
+	U.UserId,
+    U.FirstName,
+    U.LastName,
+    U.Username,
+    U.Password,
+    E.HireDate,
+    CASE
+		WHEN M.ManagerId IS NOT NULL THEN 'Manager'
+        WHEN L.LibrarianId IS NOT NULL THEN 'Librarian'
+        ELSE 'Unknown'
+	END AS Position
+FROM
+	Users U
+JOIN 
+	Employees E ON U.UserId = E.EmployeeId
+LEFT JOIN 
+	Managers M ON U.UserId = M.ManagerId
+LEFT JOIN
+	Librarians L ON U.UserId = L.LibrarianId;
+
+CREATE VIEW UsersAndCustomers AS
+SELECT
+	U.UserId,
+    U.FirstName,
+    U.LastName,
+    U.Username,
+    U.Password,
+    C.JoinDate,
+    C.ExpiryDate
+FROM
+	Users U
+INNER JOIN
+	Customers C ON U.UserId = C.CustomerId;
+
+
+CREATE VIEW UserRoles AS
+SELECT
+	U.UserId,
+    U.Username,
+    CASE
+		WHEN C.CustomerId IS NOT NULL THEN 'Customer'
+        WHEN M.ManagerId IS NOT NULL THEN 'Manager'
+        WHEN L.LibrarianId IS NOT NULL THEN 'Librarian'
+        ELSE 'Unknown'
+	END AS UserType
+FROM
+	Users U
+LEFT JOIN
+	Customers C ON U.UserId = C.CustomerId
+LEFT JOIN
+	Employees E ON U.UserId = E.EmployeeId
+LEFT JOIN
+	Managers M ON U.UserId = M.ManagerId
+LEFT JOIN
+	Librarians L ON U.UserId = L.LibrarianId;
+

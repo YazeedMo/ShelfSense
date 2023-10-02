@@ -1,6 +1,3 @@
-Create function to delete Librarian
-Create function to edit Librarian details
-
 Create function to view all Books
 Create function to add new Book
 Create function to delete Book
@@ -20,16 +17,8 @@ Create function to reserve Book
 
 Make sure Username Administrator cannot be deleted
 
+Updating database transactions must be atomic processes
+
 Design and create a better UI
 
-
-
---------------------------------------------------------
-
-Temporary pseudo code - Deleting Librarian:
-
-1. Click on user
-2. Choose Delete
-3. Open warning window
-4. Confirm? - handle deletion with DAOImp classes
 

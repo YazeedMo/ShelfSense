@@ -2,33 +2,33 @@ package com.shelfsense.shelfsense.model;
 
 import java.time.LocalDate;
 
-public class Employee extends User {
+public abstract class Employee extends User {
 
     // Employee attributes
     private LocalDate hireDate;
-    private String role;
+    private String position;
 
     // Public constructor
-    public Employee(int employeeId, String firstName, String lastName, String username, String password, String type, LocalDate hireDate, String role) {
-        super(employeeId, firstName, lastName, username, password, type);
+    public Employee(int employeeId, String firstName, String lastName, String username, String password, LocalDate hireDate, String position) {
+        super(employeeId, firstName, lastName, username, password);
         this.hireDate = hireDate;
-        this.role = role;
+        this.position = position;
     }
 
     // Getters
     public LocalDate getHireDate() {
         return hireDate;
     }
-    public String getRole() {
-        return role;
+    public String getPosition() {
+        return position;
     }
 
     // Setters
     public void setHireDate(LocalDate hireDate) {
         this.hireDate = hireDate;
     }
-    public void setRole(String role) {
-        this.role = role;
+    public void setPosition(String position) {
+        this.position = position;
     }
 
     @Override
@@ -39,9 +39,8 @@ public class Employee extends User {
                 ", lastName='" + super.getLastName() + '\'' +
                 ", username='" + super.getUsername() + '\'' +
                 ", password='" + super.getPassword() + '\'' +
-                ", Type='" + super.getType() + '\'' +
                 ", hireDate='" + this.hireDate + '\'' +
-                ", role='" + this.role + '\'' +
+                ", position=" + this.position + '\'' +
                 '}';
     }
 

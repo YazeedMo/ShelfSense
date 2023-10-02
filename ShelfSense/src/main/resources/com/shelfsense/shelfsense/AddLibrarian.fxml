@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="501.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.shelfsense.shelfsense.controller.AddLibrarianController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="501.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.shelfsense.shelfsense.controller.AddEmployeeController">
    <bottom>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="90.0" BorderPane.alignment="CENTER">
          <children>
@@ -47,14 +47,14 @@
             <Label text="Username" GridPane.rowIndex="3" />
             <Label text="Password" GridPane.rowIndex="4" />
             <Label text="Hire Date" GridPane.rowIndex="5" />
-            <Label text="Role" GridPane.rowIndex="6" />
+            <Label text="Position" GridPane.rowIndex="6" />
             <ComboBox fx:id="comboBoxId" prefWidth="150.0" GridPane.columnIndex="1" />
             <TextField fx:id="txtFieldFirstName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="txtFieldLastname" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="txtFieldUsername" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <PasswordField fx:id="psswrdFldPassword" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <DatePicker fx:id="datePickerHireDate" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <ComboBox fx:id="comboBoxRole" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <ComboBox fx:id="comboBoxPosition" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
          </children>
       </GridPane>
    </center>
