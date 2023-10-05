@@ -108,6 +108,16 @@ public class EmployeeService {
         }
     }
 
+    public boolean canDeleteAdmin() {
+        try {
+            return employeeDAO.getManagerCount() > 1;
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     // Show an alert box to confirm Employee deletion
     private boolean confirmDeletion(Employee employee) {
 

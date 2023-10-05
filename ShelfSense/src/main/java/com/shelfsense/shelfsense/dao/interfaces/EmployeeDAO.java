@@ -9,6 +9,8 @@ public interface EmployeeDAO extends GenericDAO<Employee> {
 
     LocalDate getHireDate(int userId) throws SQLException;
 
-    public String getPosition (Employee employee);
+    String getPosition(Employee employee);
+
+    int getManagerCount() throws SQLException;
 
 }

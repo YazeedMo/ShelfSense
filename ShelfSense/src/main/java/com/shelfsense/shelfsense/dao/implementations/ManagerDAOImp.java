@@ -123,7 +123,8 @@ public class ManagerDAOImp implements ManagerDAO {
 
         // SQL to update Employees table
         String employeesSQL = "UPDATE Employees SET " +
-                "HireDate = ?";
+                "HireDate = ?" +
+                "WHERE EmployeeId = ?";
 
         // SQL to update Users table
         String usersSQL = "UPDATE Users SET " +
@@ -138,6 +139,7 @@ public class ManagerDAOImp implements ManagerDAO {
              PreparedStatement psForUsers = connection.prepareStatement(usersSQL)) {
 
             psForEmployees.setObject(1, manager.getHireDate());
+            psForEmployees.setInt(2, manager.getUserId());
 
             psForUsers.setString(1, manager.getFirstName());
             psForUsers.setString(2, manager.getLastName());

@@ -26,7 +26,7 @@
       </HBox>
    </bottom>
    <top>
-      <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="665.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="665.0" spacing="150.0" BorderPane.alignment="CENTER">
          <children>
             <Button mnemonicParsing="false" onAction="#btnBackClicked" prefWidth="60.0" text="Back" />
          </children>

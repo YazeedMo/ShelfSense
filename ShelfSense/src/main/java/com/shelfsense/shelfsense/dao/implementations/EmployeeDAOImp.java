@@ -152,6 +152,26 @@ public class EmployeeDAOImp implements EmployeeDAO {
         return employeePosition;
     }
 
+    @Override
+    public int getManagerCount() throws SQLException {
+
+        String query = "SELECT COUNT(*) FROM Managers;";
+
+        try (Connection connection = Database.getConnection();
+             Statement stmt = connection.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return 0;
+    }
+
     // endregion
 
 

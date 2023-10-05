@@ -1,6 +1,7 @@
 package com.shelfsense.shelfsense.controller;
 
 import com.shelfsense.shelfsense.dao.implementations.EmployeeDAOImp;
+import com.shelfsense.shelfsense.dao.interfaces.EmployeeDAO;
 import com.shelfsense.shelfsense.model.Employee;
 import com.shelfsense.shelfsense.services.EmployeeService;
 import com.shelfsense.shelfsense.util.JavaFXUtils;
@@ -130,13 +131,21 @@ public class ManageEmployeesController {
         tblViewLibrarians.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
 
             if (newValue != null) {
-                // A librarian is selected
+                // An Employee is selected
                 selectedEmployee = newValue;
+
+                // Make sure last admin cannot be deleted
+                if (selectedEmployee.getPosition().equalsIgnoreCase("Manager")) {
+                    btnDelete.setDisable(!employeeService.canDeleteAdmin());
+                }
+                else {
+                    btnDelete.setDisable(false);
+                }
+
                 btnEdit.setDisable(false);
-                btnDelete.setDisable(false);
             }
             else {
-                // No librarian is selected
+                // No Employee is selected
                 btnEdit.setDisable(true);
                 btnDelete.setDisable(true);
             }

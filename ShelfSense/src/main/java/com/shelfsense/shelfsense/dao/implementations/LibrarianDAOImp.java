@@ -122,7 +122,8 @@ public class LibrarianDAOImp implements LibrarianDAO {
 
         // SQL to update Employees table
         String employeesSQL = "UPDATE Employees SET " +
-                "HireDate = ?";
+                "HireDate = ?" +
+                "WHERE EmployeeId = ?";
 
         // SQL to update Users table
         String usersSQL = "UPDATE Users SET " +
@@ -137,6 +138,7 @@ public class LibrarianDAOImp implements LibrarianDAO {
              PreparedStatement psForUsers = connection.prepareStatement(usersSQL)) {
 
             psForEmployees.setObject(1, librarian.getHireDate());
+            psForEmployees.setInt(2, librarian.getUserId());
 
             psForUsers.setString(1, librarian.getFirstName());
             psForUsers.setString(2, librarian.getLastName());

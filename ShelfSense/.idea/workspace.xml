@@ -5,36 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e4617e5f-d3ac-4188-8137-ee95c46e176e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Documentation/Application/Database/DBCreationScript.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Documentation/Application/Database/DBCreationScript.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Documentation/Application/Database/ShelfSenseDB.drawio" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Documentation/Application/MVCModel/Controller/.$ControllerClasses.drawio.dtmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Documentation/Application/MVCModel/Controller/ControllerClasses.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/../Documentation/Application/MVCModel/Controller/ControllerClasses.drawio" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Documentation/Application/MVCModel/Controller/DAOClasses.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/../Documentation/Application/MVCModel/Controller/DAOClasses.drawio" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Documentation/Application/MVCModel/Model/ClassDiagram.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/../Documentation/Application/MVCModel/Model/ClassDiagram.drawio" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Documentation/Backlog.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Documentation/Backlog.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Documentation/Requirements/.$UseCaseDiagram.drawio.bkp" beforeDir="false" afterPath="$PROJECT_DIR$/../Documentation/Requirements/.$UseCaseDiagram.drawio.bkp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Documentation/Requirements/UseCaseDiagram.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/../Documentation/Requirements/UseCaseDiagram.drawio" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documentation/Application/Database/.$ERD.drawio.bkp" beforeDir="false" afterPath="$PROJECT_DIR$/../Documentation/Application/Database/.$ERD.drawio.bkp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documentation/Application/Database/ERD.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/../Documentation/Application/Database/ERD.drawio" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/controller/AddLibrarianController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/controller/AddEmployeeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/controller/ManageLibrariansController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/controller/ManageEmployeesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/controller/ManagerMainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/controller/ManagerMainMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/implementations/CustomerDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/implementations/CustomerDAOImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/controller/ManageEmployeesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/controller/ManageEmployeesController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/implementations/EmployeeDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/implementations/EmployeeDAOImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/implementations/UserDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/implementations/UserDAOImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/implementations/LibrarianDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/implementations/LibrarianDAOImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/implementations/ManagerDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/implementations/ManagerDAOImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/interfaces/EmployeeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/interfaces/EmployeeDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/interfaces/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/interfaces/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/model/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/model/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/services/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/services/EmployeeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/services/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/services/LoginService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/util/JavaFXUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/util/JavaFXUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/shelfsense/shelfsense/AddLibrarian.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/shelfsense/shelfsense/AddLibrarian.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/shelfsense/shelfsense/ManageLibrarians.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/shelfsense/shelfsense/ManageEmployees.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/shelfsense/shelfsense/ManagerMainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/shelfsense/shelfsense/ManagerMainMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/shelfsense/shelfsense/ManageEmployees.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/shelfsense/shelfsense/ManageEmployees.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
