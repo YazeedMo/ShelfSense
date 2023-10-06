@@ -113,6 +113,25 @@ public class AddEmployeeController {
         selectedEmployee = employee;
     }
 
+    private Employee createEmployee() {
+
+        // Get the values in each field
+        int id = comboBoxId.getValue();
+        String firstName = txtFieldFirstName.getText();
+        String lastName = txtFieldLastname.getText();
+        String username = txtFieldUsername.getText();
+        String password = psswrdFldPassword.getText();
+        LocalDate hireDate = datePickerHireDate.getValue();
+        String position = comboBoxPosition.getValue();
+
+        if (position.equalsIgnoreCase("Manager")) {
+            return new Manager(id, firstName, lastName, username, password, hireDate, position);
+        }
+        else {
+            return new Librarian(id, firstName, lastName, username, password, hireDate, position);
+        }
+    }
+
     // Handles the logic when user interacts with the fields
     private class FieldChangeListener implements ChangeListener<Object> {
 
@@ -127,7 +146,7 @@ public class AddEmployeeController {
             boolean validDetails = false;
 
             boolean allFieldsFilled = areAllFieldsFilled();
-            boolean validPassword = isPasswordValid();
+            boolean validPassword = validPassword();
 
             // Update label to notify users of any errors
             if (!allFieldsFilled) {
@@ -159,28 +178,10 @@ public class AddEmployeeController {
         }
 
         // Checks if password meets complexity criteria
-        private boolean isPasswordValid() {
+        private boolean validPassword() {
             int numPasswordCharacters = psswrdFldPassword.getText().length();
             return numPasswordCharacters >= employeeService.getMinPasswordLength();
         }
     }
 
-    private Employee createEmployee() {
-
-        // Get the values in each field
-        int id = comboBoxId.getValue();
-        String firstName = txtFieldFirstName.getText();
-        String lastName = txtFieldLastname.getText();
-        String username = txtFieldUsername.getText();
-        String password = psswrdFldPassword.getText();
-        LocalDate hireDate = datePickerHireDate.getValue();
-        String position = comboBoxPosition.getValue();
-
-        if (position.equalsIgnoreCase("Manager")) {
-            return new Manager(id, firstName, lastName, username, password, hireDate, position);
-        }
-        else {
-            return new Librarian(id, firstName, lastName, username, password, hireDate, position);
-        }
-    }
 }

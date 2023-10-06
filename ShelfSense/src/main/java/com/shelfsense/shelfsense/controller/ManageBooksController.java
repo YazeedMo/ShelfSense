@@ -54,7 +54,10 @@ public class ManageBooksController {
     @FXML
     void btnAddClicked(ActionEvent event) {
 
+        bookService.showAddBookScene();
 
+        // Update tblViewBooks after new Book has been added
+        updateTblViewBooks();
 
     }
 
@@ -68,7 +71,7 @@ public class ManageBooksController {
 
     }
 
-    private void updateTblViewBooks() {
+    private void updateTblViewBooks()   {
 
         List<Book> bookList = new ArrayList<>();
 

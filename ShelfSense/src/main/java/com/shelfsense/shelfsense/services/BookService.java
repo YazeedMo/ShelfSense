@@ -3,12 +3,20 @@ package com.shelfsense.shelfsense.services;
 import com.shelfsense.shelfsense.dao.implementations.BookDaoImp;
 import com.shelfsense.shelfsense.dao.interfaces.BookDao;
 import com.shelfsense.shelfsense.model.Book;
+import com.shelfsense.shelfsense.util.JavaFXUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.Set;
 
 public class BookService {
@@ -34,6 +42,35 @@ public class BookService {
             }
         }
         return availableIds;
+    }
+
+    public ObservableList<Integer> getAvailableQuantities() {
+
+        ObservableList<Integer> availableQuantities = FXCollections.observableArrayList();
+        for (int i = 0; i <= 100; i++) {
+            availableQuantities.add(i);
+        }
+
+        return availableQuantities;
+
+    }
+
+    public void showAddBookScene() {
+
+        // Show AddBook window
+        Stage addBookStage = new Stage();
+        addBookStage.initModality(Modality.APPLICATION_MODAL);
+
+        try {
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(JavaFXUtils.FXMLPaths.ADD_BOOK.getPath())));
+            Scene scene = new Scene(root);
+            addBookStage.setScene(scene);
+            addBookStage.showAndWait();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void addBook(Book book) {
@@ -70,6 +107,21 @@ public class BookService {
         }
     }
 
+    public boolean isISBNAvailable(String isbn) {
+
+        Book book = null;
+
+        try {
+            book = bookDao.getWithISBN(isbn);
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return book == null;
+
+    }
+
     private boolean confirmDeletion(Book book) {
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -80,5 +132,6 @@ public class BookService {
 
         return alert.getResult() == ButtonType.OK;
     }
+
 
 }

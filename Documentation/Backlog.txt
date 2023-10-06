@@ -1,3 +1,11 @@
+REFACTORING:
+Make sure all Controller classes use the service class and not DAO classes
+Rename all boolean returning methods
+Manage all SQLExceptions in Service classes
+
+
+
+MAIN TASKS:
 Create function to view all Books
 Create function to add new Book
 Create function to delete Book

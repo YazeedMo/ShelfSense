@@ -42,7 +42,7 @@ public class BookDaoImp implements BookDao {
                 String edition = rs.getString("Edition");
                 int quantity = rs.getInt("Quantity");
 
-                allBooks.add(new Book(bookId, title, author, genre, isbn, publicationDate, publisher, edition, quantity));
+                allBooks.add(new Book(bookId, title, author, isbn, genre, publicationDate, publisher, edition, quantity));
 
             }
         }
@@ -176,6 +176,39 @@ public class BookDaoImp implements BookDao {
             }
         }
         return usedIds;
+    }
+
+    @Override
+    public Book getWithISBN(String bookISBN) throws SQLException {
+
+        Book book = null;
+
+        String query = "SELECT BookId, Title, Author, ISBN, Genre, PublicationDate, Publisher, Edition, Quantity " +
+                "FROM Books " +
+                "WHERE ISBN = ?";
+
+        try (Connection conn = Database.getConnection();
+             PreparedStatement ps = conn.prepareStatement(query)) {
+
+            ps.setString(1, bookISBN);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int bookId = rs.getInt("BookId");
+                String title = rs.getString("Title");
+                String author = rs.getString("Author");
+                String isbn = rs.getString("ISBN");
+                String genre = rs.getString("Genre");
+                LocalDate publicationDate = rs.getObject("PublicationDate", LocalDate.class);
+                String publisher = rs.getString("Publisher");
+                String edition = rs.getString("Edition");
+                int quantity = rs.getInt("Quantity");
+
+                book = new Book(bookId, title, author, isbn, genre, publicationDate, publisher, edition, quantity);
+
+            }
+            return book;
+        }
     }
 
 }

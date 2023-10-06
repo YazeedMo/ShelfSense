@@ -9,4 +9,6 @@ public interface BookDao extends GenericDAO<Book> {
 
     Set<Integer> getUsedIds() throws SQLException;
 
+    Book getWithISBN(String bookISBN) throws SQLException;
+
 }
