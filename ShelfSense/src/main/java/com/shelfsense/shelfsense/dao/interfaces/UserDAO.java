@@ -15,6 +15,6 @@ public interface UserDAO extends GenericDAO<User> {
 
     String getTypeWithId(int userId) throws SQLException;
 
-    Set<Integer> getUsedIds();
+    Set<Integer> getUsedIds() throws SQLException;
 
 }

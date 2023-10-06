@@ -20,7 +20,8 @@ public class JavaFXUtils {
         ADD_EMPLOYEE("/com/shelfsense/shelfsense/AddLibrarian.fxml"),
         LIBRARIAN_MAIN_MENU("/com/shelfsense/shelfsense/LibrarianMainMenu.fxml"),
         CUSTOMER_MAIN_MENU("/com/shelfsense/shelfsense/CustomerMainMenu.fxml"),
-        MANAGE_LIBRARIANS("/com/shelfsense/shelfsense/ManageEmployees.fxml");
+        MANAGE_LIBRARIANS("/com/shelfsense/shelfsense/ManageEmployees.fxml"),
+        MANAGE_BOOKS("/com/shelfsense/shelfsense/ManageBooks.fxml");
 
         private final String path;
 

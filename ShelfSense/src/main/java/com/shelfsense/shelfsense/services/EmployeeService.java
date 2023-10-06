@@ -33,18 +33,21 @@ public class EmployeeService {
     public ObservableList<Integer> getAvailableIds() {
 
         // Fetch used IDs from the database
-        Set<Integer> usedIds = userDAO.getUsedIds();
+        Set<Integer> usedIds = null;
+        try {
+            usedIds = userDAO.getUsedIds();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         // Determine available IDs
         ObservableList<Integer> availableIds = FXCollections.observableArrayList();
         for (int i = 1; i <= 100; i++) {
-            if (!usedIds.contains(i)) {
+            if (usedIds != null && !usedIds.contains(i)) {
                 availableIds.add(i);
             }
         }
-
         return availableIds;
-
     }
 
     public int getMinPasswordLength() {

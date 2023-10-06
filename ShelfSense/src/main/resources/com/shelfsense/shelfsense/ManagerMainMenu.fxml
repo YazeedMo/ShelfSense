@@ -14,7 +14,7 @@
          <children>
             <Button disable="true" minHeight="30.0" mnemonicParsing="false" onAction="#btnReportsClicked" prefWidth="150.0" text="Reports" />
             <Button minHeight="30.0" mnemonicParsing="false" onAction="#btnManageEmployeesClicked" prefWidth="150.0" text="Manage Employees" />
-            <Button disable="true" minHeight="30.0" mnemonicParsing="false" onAction="#btnManageBooksClicked" prefWidth="150.0" text="Manage Books" />
+            <Button minHeight="30.0" mnemonicParsing="false" onAction="#btnManageBooksClicked" prefWidth="150.0" text="Manage Books" />
             <Button disable="true" minHeight="30.0" mnemonicParsing="false" onAction="#btnManageCustomersClicked" prefWidth="150.0" text="Manage Customers" />
             <Button disable="true" minHeight="30.0" mnemonicParsing="false" onAction="#btnManageLoansClicked" prefWidth="150.0" text="Manage Loans" />
          </children>

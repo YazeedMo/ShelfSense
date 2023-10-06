@@ -167,7 +167,7 @@ public class UserDAOImp implements UserDAO {
 
     // Returns all ID numbers that have already been assigned to employees
     @Override
-    public Set<Integer> getUsedIds() {
+    public Set<Integer> getUsedIds() throws SQLException {
 
         // Set used so that the checking of whether an ID is used is efficient
         Set<Integer> usedIds = new HashSet<>();
@@ -182,14 +182,8 @@ public class UserDAOImp implements UserDAO {
             while (rs.next()) {
                 usedIds.add(rs.getInt("UserId"));
             }
-
         }
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
-
         return usedIds;
-
     }
 
     // endregion

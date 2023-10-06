@@ -1,6 +1,6 @@
 package com.shelfsense.shelfsense.model;
 
-import java.util.ArrayList;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Book {
@@ -11,13 +11,13 @@ public class Book {
     private String author;
     private String ISBN;
     private String genre;
-    private Date publicationDate;
+    private LocalDate publicationDate;
     private String publisher;
     private String edition;
     private int quantity;
 
     // Public constructor
-    public Book(int bookId, String title, String author, String ISBN, String genre, Date publicationDate, String publisher, String edition, int quantity) {
+    public Book(int bookId, String title, String author, String ISBN, String genre, LocalDate publicationDate, String publisher, String edition, int quantity) {
         this.bookId = bookId;
         this.title = title;
         this.author = author;
@@ -45,7 +45,7 @@ public class Book {
     public String getGenre() {
         return genre;
     }
-    public Date getPublicationDate() {
+    public LocalDate getPublicationDate() {
         return publicationDate;
     }
     public String getPublisher() {
@@ -74,7 +74,7 @@ public class Book {
     public void setGenre(String genre) {
         this.genre = genre;
     }
-    public void setPublicationDate(Date publicationDate) {
+    public void setPublicationDate(LocalDate publicationDate) {
         this.publicationDate = publicationDate;
     }
     public void setPublisher(String publisher) {

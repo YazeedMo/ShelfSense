@@ -29,6 +29,7 @@ public class ManageEmployeesController {
 
     private Employee selectedEmployee;
 
+    private final EmployeeDAO employeeDAO = new EmployeeDAOImp();
     private final EmployeeService employeeService = new EmployeeService();
 
     @FXML
@@ -114,7 +115,7 @@ public class ManageEmployeesController {
 
         // Get a list of all existing Employees
         try {
-            employeeList = new EmployeeDAOImp().getAll();
+            employeeList = employeeDAO.getAll();
         } catch (SQLException e) {
             e.printStackTrace();
         }

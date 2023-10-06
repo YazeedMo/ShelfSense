@@ -9,12 +9,13 @@
       <change beforePath="$PROJECT_DIR$/../Documentation/Application/Database/ERD.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/../Documentation/Application/Database/ERD.drawio" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/controller/ManageEmployeesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/controller/ManageEmployeesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/implementations/EmployeeDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/implementations/EmployeeDAOImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/implementations/LibrarianDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/implementations/LibrarianDAOImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/implementations/ManagerDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/implementations/ManagerDAOImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/interfaces/EmployeeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/interfaces/EmployeeDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/controller/ManagerMainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/controller/ManagerMainMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/implementations/UserDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/implementations/UserDAOImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/interfaces/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/dao/interfaces/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/model/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/model/Book.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/services/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/services/EmployeeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/shelfsense/shelfsense/ManageEmployees.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/shelfsense/shelfsense/ManageEmployees.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/util/JavaFXUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/util/JavaFXUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/shelfsense/shelfsense/ManagerMainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/shelfsense/shelfsense/ManagerMainMenu.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,11 +170,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/shelfsense/shelfsense/model/Book.java</url>
-          <line>68</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.sql.SQLException" package="java.sql" />
           <option name="timeStamp" value="3" />

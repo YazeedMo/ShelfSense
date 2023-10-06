@@ -19,7 +19,7 @@ public class ManagerMainMenuController {
 
     @FXML
     void btnManageBooksClicked(ActionEvent event) {
-
+        JavaFXUtils.showNextScene((Node) event.getSource(), JavaFXUtils.FXMLPaths.MANAGE_BOOKS.getPath());
     }
 
     @FXML
