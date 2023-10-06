@@ -29,7 +29,6 @@ public class ManageEmployeesController {
 
     private Employee selectedEmployee;
 
-    private final EmployeeDAO employeeDAO = new EmployeeDAOImp();
     private final EmployeeService employeeService = new EmployeeService();
 
     @FXML
@@ -74,11 +73,12 @@ public class ManageEmployeesController {
             employeeService.deleteEmployee(selectedEmployee);
             updateTblViewLibrarians();
         }
+
     }
 
     private void updateTblViewLibrarians() {
 
-        List<Employee> employeeList = new ArrayList<>();
+        List<Employee> employeeList;
 
         // Clear initial Table View (any default columns created by Scene Builder)
         tblViewLibrarians.getColumns().clear();
@@ -114,11 +114,7 @@ public class ManageEmployeesController {
         tblViewLibrarians.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         // Get a list of all existing Employees
-        try {
-            employeeList = employeeDAO.getAll();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        employeeList = employeeService.getAllEmployees();
 
         // Convert employeeList into an ObservableList
         ObservableList<Employee> employeeObservableList = FXCollections.observableList(employeeList);
@@ -153,4 +149,5 @@ public class ManageEmployeesController {
 
         });
     }
+
 }

@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -71,6 +72,28 @@ public class EmployeeService {
         }
     }
 
+    public void showEditEmployeeScene(Employee employee) {
+
+        AddEmployeeController.setSelectedEmployee(employee);
+
+        showAddEmployeeScene();
+
+    }
+
+    public List<Employee> getAllEmployees() {
+
+        List<Employee> allEmployees = null;
+
+        try {
+            allEmployees = employeeDAO.getAll();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return allEmployees;
+
+    }
+
     public void addEmployee(Employee employee) {
 
         try {
@@ -78,14 +101,6 @@ public class EmployeeService {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-    }
-
-    public void showEditEmployeeScene(Employee employee) {
-
-        AddEmployeeController.setSelectedEmployee(employee);
-
-        showAddEmployeeScene();
 
     }
 

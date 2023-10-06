@@ -18,6 +18,7 @@ public class EmployeeDAOImp implements EmployeeDAO {
     private final ManagerDAO managerDAO = new ManagerDAOImp();
     private final LibrarianDAO librarianDAO = new LibrarianDAOImp();
 
+
     // region GenericDAO Methods
 
     @Override
@@ -165,9 +166,6 @@ public class EmployeeDAOImp implements EmployeeDAO {
                 return rs.getInt(1);
             }
         }
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
 
         return 0;
     }
@@ -211,4 +209,5 @@ public class EmployeeDAOImp implements EmployeeDAO {
     }
 
     // endregion
+
 }

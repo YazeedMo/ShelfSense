@@ -31,8 +31,6 @@ public class ManageBooksController {
     private Button btnDelete;
 
     private Book selectedBook;
-
-    private final BookDao bookDao = new BookDaoImp();
     private final BookService bookService = new BookService();
 
     @FXML
@@ -64,16 +62,25 @@ public class ManageBooksController {
     @FXML
     void btnEditClicked(ActionEvent event) {
 
+        bookService.showEditBookScene(selectedBook);
+
+        updateTblViewBooks();
+
     }
 
     @FXML
     void btnDeleteClicked(ActionEvent event) {
 
+        if (selectedBook != null) {
+            bookService.deleteBook(selectedBook);
+            updateTblViewBooks();
+        }
+
     }
 
     private void updateTblViewBooks()   {
 
-        List<Book> bookList = new ArrayList<>();
+        List<Book> bookList;
 
         // Clear initial Table View (any default columns created by Scene Builder
         tblViewBooks.getColumns().clear();
@@ -121,12 +128,7 @@ public class ManageBooksController {
         tblViewBooks.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         // Get a list of all existing Books
-        try {
-            bookList = bookDao.getAll();
-        }
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
+        bookList = bookService.getAllBooks();
 
         // Convert bookList into an ObservableList
         ObservableList<Book> bookObservableList = FXCollections.observableList(bookList);

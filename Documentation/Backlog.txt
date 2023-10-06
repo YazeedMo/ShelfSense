@@ -1,16 +1,4 @@
-REFACTORING:
-Make sure all Controller classes use the service class and not DAO classes
-Rename all boolean returning methods
-Manage all SQLExceptions in Service classes
-
-
-
 MAIN TASKS:
-Create function to view all Books
-Create function to add new Book
-Create function to delete Book
-Create function to edit Book details
-
 Create function to view Customers
 Create function to add new Customer
 Create function to delete Book
@@ -23,10 +11,12 @@ Create function to edit Loan
 
 Create function to reserve Book
 
-Make sure Username Administrator cannot be deleted
-
 Updating database transactions must be atomic processes
 
 Design and create a better UI
 
+REFACTORING:
+Rename all boolean returning methods
+Manage all SQLExceptions in Service class
+Use some kind of logging library
 

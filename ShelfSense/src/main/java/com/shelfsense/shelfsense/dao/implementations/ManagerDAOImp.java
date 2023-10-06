@@ -14,6 +14,7 @@ import java.util.List;
 
 public class ManagerDAOImp implements ManagerDAO {
 
+
     // region GenericDAO Methods
 
     @Override

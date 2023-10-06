@@ -16,6 +16,7 @@ import java.util.Set;
 
 public class BookDaoImp implements BookDao {
 
+
     // region GenericDAO Methods
 
     @Override
@@ -110,7 +111,7 @@ public class BookDaoImp implements BookDao {
     public int update(Book book) throws SQLException {
 
         String sql = "UPDATE Books SET " +
-                "BookId = ?, " +
+                "BookId = ?," +
                 "Title = ?, " +
                 "Author = ?, " +
                 "ISBN = ?, " +
@@ -118,7 +119,8 @@ public class BookDaoImp implements BookDao {
                 "PublicationDate = ?, " +
                 "Publisher = ?, " +
                 "Edition = ?, " +
-                "Quantity = ?";
+                "Quantity = ? " +
+                "WHERE BookId = ?";
 
         try (Connection conn = Database.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -132,6 +134,7 @@ public class BookDaoImp implements BookDao {
             ps.setString(7, book.getPublisher());
             ps.setString(8, book.getEdition());
             ps.setObject(9, book.getQuantity());
+            ps.setInt(10, book.getBookId());
 
             return ps.executeUpdate();
 
@@ -210,5 +213,7 @@ public class BookDaoImp implements BookDao {
             return book;
         }
     }
+
+    // endregion
 
 }

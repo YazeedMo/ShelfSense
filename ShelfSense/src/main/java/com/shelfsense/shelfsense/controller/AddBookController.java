@@ -79,14 +79,17 @@ public class AddBookController {
         // This will run if user chose "Edit" in the ManageBooks window
         if (selectedBook != null) {
             comboBoxId.setDisable(true);
+            comboBoxId.setValue(selectedBook.getBookId());
             txtFieldTitle.setText(selectedBook.getTitle());
             txtFieldAuthor.setText(selectedBook.getAuthor());
+            txtFieldISBN.setDisable(true);
             txtFieldISBN.setText(selectedBook.getISBN());
             txtFieldGenre.setText(selectedBook.getGenre());
             datePickerPublicationDate.setValue(selectedBook.getPublicationDate());
             txtFieldPublisher.setText(selectedBook.getPublisher());
             txtFieldEdition.setText(selectedBook.getEdition());
             comboBoxQuantity.setValue(selectedBook.getQuantity());
+            btnAdd.setText("Submit");
         }
 
     }
@@ -113,6 +116,12 @@ public class AddBookController {
     @FXML
     void btnCancelClicked(ActionEvent event) {
 
+        JavaFXUtils.getCurrentStage(btnAdd).close();
+
+    }
+
+    public static void setSelectedBook(Book book) {
+        selectedBook = book;
     }
 
     private Book createBook() {
@@ -149,16 +158,25 @@ public class AddBookController {
             boolean allFieldsFilled = areAllFieldsFilled();
             boolean validISBN = isValidISBN();
 
-            // Update label to notify users of any errors
-            if (!allFieldsFilled) {
-                lblNotifications.setText("Enter New Book Details");
-            }
-            else if (!validISBN) {
-                lblNotifications.setText("ISBN already exists");
+            if (selectedBook == null) {
+                // Update label to notify users of any errors
+                if (!allFieldsFilled) {
+                    lblNotifications.setText("Enter New Book Details");
+                } else if (!validISBN) {
+                    lblNotifications.setText("ISBN already exists");
+                } else {
+                    lblNotifications.setText("Good to go!");
+                    validDetails = true;
+                }
             }
             else {
-                lblNotifications.setText("Good to go!");
-                validDetails = true;
+                if (!allFieldsFilled) {
+                    lblNotifications.setText("Enter new Updated details");
+                }
+                else {
+                    lblNotifications.setText("Good to go!");
+                    validDetails = true;
+                }
             }
 
             // Only enable add button when all fields are filled in correctly

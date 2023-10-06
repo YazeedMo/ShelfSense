@@ -1,5 +1,6 @@
 package com.shelfsense.shelfsense.services;
 
+import com.shelfsense.shelfsense.controller.AddBookController;
 import com.shelfsense.shelfsense.dao.implementations.BookDaoImp;
 import com.shelfsense.shelfsense.dao.interfaces.BookDao;
 import com.shelfsense.shelfsense.model.Book;
@@ -16,6 +17,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -70,6 +72,29 @@ public class BookService {
         catch (IOException e) {
             e.printStackTrace();
         }
+
+    }
+
+    public void showEditBookScene(Book book) {
+
+        AddBookController.setSelectedBook(book);
+
+        showAddBookScene();
+
+    }
+
+    public List<Book> getAllBooks() {
+
+        List<Book> allBooks = null;
+
+        try {
+            allBooks = bookDao.getAll();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return allBooks;
 
     }
 
